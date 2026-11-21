@@ -1,4 +1,4 @@
-use anyhow::{Result, bail};
+use anyhow::{Context, Result, bail};
 use serde::Serialize;
 use serde_json::Value;
 
@@ -73,8 +73,9 @@ pub struct Item {
     pub images: Vec<String>,
 }
 
-pub fn build_url(creds: &Credentials, q: &Query) -> String {
-    let mut url = url::Url::parse(ENDPOINT).expect("static url");
+pub fn build_url(creds: &Credentials, q: &Query) -> Result<String> {
+    let endpoint = std::env::var("SHOP_RAKUTEN_ENDPOINT").unwrap_or_else(|_| ENDPOINT.to_string());
+    let mut url = url::Url::parse(&endpoint).context("invalid SHOP_RAKUTEN_ENDPOINT")?;
     {
         let mut p = url.query_pairs_mut();
         p.append_pair("applicationId", &creds.app_id);
@@ -105,18 +106,18 @@ pub fn build_url(creds: &Credentials, q: &Query) -> String {
             p.append_pair("availability", "1");
         }
     }
-    url.into()
+    Ok(url.into())
 }
 
 pub fn search(fetcher: &Fetcher, creds: &Credentials, q: &Query) -> Result<SearchPage> {
-    let url = build_url(creds, q);
+    let url = build_url(creds, q)?;
     let mut headers = vec![("accessKey", creds.access_key.clone())];
     if let Some(r) = &creds.referer {
         headers.push(("Referer", r.clone()));
         headers.push(("Origin", r.trim_end_matches('/').to_string()));
     }
     if fetcher.verbose {
-        eprintln!("shop: GET {ENDPOINT}");
+        eprintln!("shop: GET {}", url.split('?').next().unwrap_or(&url));
     }
     let (status, body) = fetcher.json(&url, &headers)?;
     parse_response(status, &body)

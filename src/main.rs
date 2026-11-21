@@ -12,7 +12,7 @@ use shop::{
 #[derive(Parser)]
 #[command(
     version,
-    about = "Search and inspect products on Amazon (.co.jp, .com) and Rakuten Ichiba"
+    about = "Searches Amazon Japan and Rakuten Ichiba: prices, ratings, specs and top reviews as text or JSON"
 )]
 struct Cli {
     #[arg(long, global = true, help = "Print JSON instead of text")]
@@ -353,9 +353,9 @@ fn print_rakuten_search(res: &rakuten::SearchPage) {
     );
     for (i, it) in res.items.iter().enumerate() {
         let mut head = format!(
-            "{:>2}. ¥{}  ★{:.2} ({})  {}",
+            "{:>2}. {}  ★{:.2} ({})  {}",
             i + 1,
-            it.price,
+            yen(it.price),
             it.rating,
             it.rating_count,
             it.shop
@@ -375,7 +375,7 @@ fn print_rakuten_search(res: &rakuten::SearchPage) {
 fn print_rakuten_item(it: &rakuten::Item) {
     println!("{}", it.name);
     println!("{}", it.url);
-    println!("{:<13}¥{}", "price", it.price);
+    println!("{:<13}{}", "price", yen(it.price));
     println!("{:<13}{} ({})", "shop", it.shop, it.shop_code);
     println!("{:<13}★{:.2} ({})", "rating", it.rating, it.rating_count);
     println!("{:<13}{}", "in stock", it.in_stock);
@@ -386,5 +386,27 @@ fn print_rakuten_item(it: &rakuten::Item) {
     }
     if let Some(c) = &it.caption {
         println!("\n{c}");
+    }
+}
+
+fn yen(n: u64) -> String {
+    let digits = n.to_string();
+    let mut out = String::from("￥");
+    for (i, c) in digits.chars().enumerate() {
+        if i > 0 && (digits.len() - i).is_multiple_of(3) {
+            out.push(',');
+        }
+        out.push(c);
+    }
+    out
+}
+
+#[cfg(test)]
+mod tests {
+    #[test]
+    fn yen() {
+        assert_eq!(super::yen(4980), "￥4,980");
+        assert_eq!(super::yen(1234567), "￥1,234,567");
+        assert_eq!(super::yen(980), "￥980");
     }
 }

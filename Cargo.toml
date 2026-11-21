@@ -1,8 +1,8 @@
 [package]
 name = "shop"
-version = "0.2.0"
+version = "0.3.0"
 edition = "2024"
-description = "Search and inspect products on Amazon (.co.jp, .com) and Rakuten Ichiba from the command line"
+description = "Searches Amazon Japan and Rakuten Ichiba from the terminal: prices, ratings, specs and top reviews as text or JSON."
 license = "MIT"
 repository = "https://github.com/DorskFR/shop"
 

@@ -1,0 +1,30 @@
+<!doctype html><html><body>
+<div data-component-type="s-search-result" data-asin="B0DEMOKT01">
+<span class="rio-badge-label">ベストセラー</span><img class="s-image" src="https://m.media-amazon.com/images/I/B0DEMOKT01.jpg" alt="">
+<div data-cy="title-recipe"><h2><span>KUMO 電気ケトル 1.0L 空焚き防止 自動電源オフ ステンレス マットブラック</span></h2></div>
+<div data-cy="reviews-block"><span class="a-icon-alt">5つ星のうち4.5</span><a aria-label="5つ星のうち4.5、評価詳細" href="#"></a><a aria-label="2,314 レーティング" href="#">(2,314)</a><span class="a-size-base a-color-secondary">過去1か月で1000点以上購入されました</span></div>
+<div data-cy="price-recipe"><span class="a-price"><span class="a-offscreen">￥2,980</span></span><span class="a-price a-text-price" data-a-strike="true"><span class="a-offscreen">￥3,980</span></span></div>
+<div data-cy="delivery-recipe">無料配送 明日 にお届け</div>
+</div>
+<div data-component-type="s-search-result" data-asin="B0DEMOKT02">
+<span class="rio-badge-label">Amazon おすすめ</span><span class="rio-badge-label">タイムセール</span><img class="s-image" src="https://m.media-amazon.com/images/I/B0DEMOKT02.jpg" alt="">
+<div data-cy="title-recipe"><h2><span>Hinata 温度調節 電気ケトル 0.8L 7段階 保温機能 ドリップ 細口 ホワイト</span></h2></div>
+<div data-cy="reviews-block"><span class="a-icon-alt">5つ星のうち4.6</span><a aria-label="5つ星のうち4.6、評価詳細" href="#"></a><a aria-label="1,128 レーティング" href="#">(1,128)</a><span class="a-size-base a-color-secondary">過去1か月で500点以上購入されました</span></div>
+<div data-cy="price-recipe"><span class="a-price"><span class="a-offscreen">￥5,480</span></span><span class="a-price a-text-price" data-a-strike="true"><span class="a-offscreen">￥6,980</span></span></div>
+<div data-cy="delivery-recipe">無料配送 明日 にお届け</div>
+</div>
+<div data-component-type="s-search-result" data-asin="B0DEMOKT03">
+<img class="s-image" src="https://m.media-amazon.com/images/I/B0DEMOKT03.jpg" alt="">
+<div data-cy="title-recipe"><span class="puis-sponsored-label-text">スポンサー</span><h2><span>Sora ガラス電気ケトル 1.7L LEDライト 二重構造 大容量</span></h2></div>
+<div data-cy="reviews-block"><span class="a-icon-alt">5つ星のうち4.2</span><a aria-label="5つ星のうち4.2、評価詳細" href="#"></a><a aria-label="846 レーティング" href="#">(846)</a></div>
+<div data-cy="price-recipe"><span class="a-price"><span class="a-offscreen">￥3,299</span></span></div>
+<div data-cy="delivery-recipe">無料配送 明日 にお届け</div>
+</div>
+<div data-component-type="s-search-result" data-asin="B0DEMOKT04">
+<span class="rio-badge-label">タイムセール</span><img class="s-image" src="https://m.media-amazon.com/images/I/B0DEMOKT04.jpg" alt="">
+<div data-cy="title-recipe"><h2><span>Mori コンパクト電気ケトル 0.6L 一人暮らし 軽量 グレー</span></h2></div>
+<div data-cy="reviews-block"><span class="a-icon-alt">5つ星のうち4.3</span><a aria-label="5つ星のうち4.3、評価詳細" href="#"></a><a aria-label="3,502 レーティング" href="#">(3,502)</a><span class="a-size-base a-color-secondary">過去1か月で2000点以上購入されました</span></div>
+<div data-cy="price-recipe"><span class="a-price"><span class="a-offscreen">￥1,780</span></span><span class="a-price a-text-price" data-a-strike="true"><span class="a-offscreen">￥2,200</span></span></div>
+<div data-cy="delivery-recipe">無料配送 明日 にお届け</div>
+</div>
+</body></html>

@@ -185,7 +185,7 @@ fn rakuten_url() {
         in_stock: true,
         ..Default::default()
     };
-    let url = rakuten::build_url(&creds, &q);
+    let url = rakuten::build_url(&creds, &q).unwrap();
     assert!(url.starts_with(rakuten::ENDPOINT));
     for part in [
         "applicationId=APP",

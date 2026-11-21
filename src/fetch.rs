@@ -42,6 +42,7 @@ impl Fetcher {
     }
 
     pub fn amazon(&self, url: &str, market: Market) -> Result<String> {
+        let url = &with_origin(url, std::env::var("SHOP_AMAZON_ORIGIN").ok().as_deref());
         if self.verbose {
             eprintln!("shop: GET {url}");
         }
@@ -87,5 +88,29 @@ impl Fetcher {
         let status = resp.status().as_u16();
         let body = resp.body_mut().read_to_string()?;
         Ok((status, body))
+    }
+}
+
+pub fn with_origin(url: &str, origin: Option<&str>) -> String {
+    let Some(origin) = origin.filter(|o| !o.is_empty()) else {
+        return url.to_string();
+    };
+    let rest = url.split_once("://").map_or(url, |(_, r)| r);
+    let path = rest.find('/').map_or("/", |i| &rest[i..]);
+    format!("{}{path}", origin.trim_end_matches('/'))
+}
+
+#[cfg(test)]
+mod tests {
+    use super::with_origin;
+
+    #[test]
+    fn origin_override() {
+        let u = "https://www.amazon.co.jp/s?k=x";
+        assert_eq!(with_origin(u, None), u);
+        assert_eq!(
+            with_origin(u, Some("http://127.0.0.1:8765/")),
+            "http://127.0.0.1:8765/s?k=x"
+        );
     }
 }

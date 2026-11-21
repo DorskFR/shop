@@ -31,11 +31,11 @@ No official API is usable (PA-API 5 was shut down in May 2026; the Creators API 
 
 `-m jp` (default) or `-m com` picks the marketplace; a product URL picks it automatically.
 
-**Fetching.** `--fetch auto` (default) uses plain HTTPS and falls back to headless Chrome when Amazon answers with a captcha, a 503 or a challenge page. `--fetch http` and `--fetch browser` force one path. Chrome is found via `SHOP_CHROME`, `PATH`, macOS `/Applications` or the Playwright cache (`~/.cache/ms-playwright`). If Chrome has no usable sandbox (Ubuntu's AppArmor user-namespace restriction with Playwright's Chromium), it is retried with `--no-sandbox`; `SHOP_CHROME_NO_SANDBOX=1` skips the first attempt.
+**Fetching.** Plain HTTPS only. When Amazon answers with a captcha, a 503 or a challenge page, `shop` stops with exit code 3.
 
 **Limits.**
 - Full review lists need a logged-in session (Amazon put them behind sign-in in late 2024); only the top reviews are available.
-- Observed from a Japanese residential IP: amazon.co.jp works over plain HTTP; amazon.com search needs the Chrome fallback; amazon.com product pages are refused (fake 404) even to Chrome. Prices on amazon.com follow the visitor's location.
+- Observed from a Japanese residential IP: amazon.co.jp works; amazon.com refuses plain HTTP (503 on search, captcha on product pages). Prices on amazon.com follow the visitor's location.
 - Keep the volume low and personal. Scraping is against Amazon's conditions of use, and heavy use gets the IP challenged.
 
 ## Rakuten

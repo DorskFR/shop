@@ -5,7 +5,7 @@ use clap::{Parser, Subcommand};
 use serde::Serialize;
 use shop::{
     amazon::{self, Market},
-    fetch::{FetchError, FetchMode, Fetcher},
+    fetch::{FetchError, Fetcher},
     rakuten,
 };
 
@@ -31,14 +31,6 @@ enum Store {
     Amazon {
         #[arg(long, short, global = true, value_enum, default_value = "jp")]
         market: Market,
-        #[arg(
-            long,
-            global = true,
-            value_enum,
-            default_value = "auto",
-            help = "auto: plain HTTP, headless Chrome when blocked"
-        )]
-        fetch: FetchMode,
         #[command(subcommand)]
         cmd: AmazonCmd,
     },
@@ -120,8 +112,8 @@ fn main() -> ExitCode {
 fn run(cli: Cli) -> Result<()> {
     let json = cli.json;
     match cli.store {
-        Store::Amazon { market, fetch, cmd } => {
-            let fetcher = Fetcher::new(fetch, cli.verbose);
+        Store::Amazon { market, cmd } => {
+            let fetcher = Fetcher::new(cli.verbose);
             match cmd {
                 AmazonCmd::Search {
                     query,
@@ -158,7 +150,7 @@ fn run(cli: Cli) -> Result<()> {
             }
         }
         Store::Rakuten { cmd } => {
-            let fetcher = Fetcher::new(FetchMode::Http, cli.verbose);
+            let fetcher = Fetcher::new(cli.verbose);
             let creds = rakuten_credentials()?;
             match cmd {
                 RakutenCmd::Search {

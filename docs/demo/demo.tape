@@ -12,7 +12,7 @@ Set TypingSpeed 35ms
 Hide
 Type "cd /vhs && python3 -m http.server 8765 --bind 127.0.0.1 -d docs/demo/mock >/dev/null 2>&1 &"
 Enter
-Type "export PATH=/vhs/target/release:$PATH SHOP_AMAZON_ORIGIN=http://127.0.0.1:8765 SHOP_RAKUTEN_ENDPOINT=http://127.0.0.1:8765/ichibams/api/IchibaItem/Search/20260701 RAKUTEN_APP_ID=demo RAKUTEN_ACCESS_KEY=demo"
+Type "export PATH=/vhs/target/release:$PATH SHOP_AMAZON_ORIGIN=http://127.0.0.1:8765 SHOP_RAKUTEN_ENDPOINT=http://127.0.0.1:8765/ichibams/api/IchibaItem/Search/20260701 RAKUTEN_APP_ID=demo RAKUTEN_ACCESS_KEY=demo SHOP_NO_UPDATE_CHECK=1"
 Enter
 Sleep 1s
 Type "clear"

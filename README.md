@@ -1,6 +1,6 @@
 # shop
 
-Searches Amazon Japan and Rakuten Ichiba from the terminal: prices, ratings, specs and top reviews as text or JSON.
+Searches Japanese shops with pure HTTP calls, fast and lightweight.
 
 [![release](https://img.shields.io/github/v/release/DorskFR/shop)](https://github.com/DorskFR/shop/releases/latest)
 [![CI](https://github.com/DorskFR/shop/actions/workflows/ci.yml/badge.svg)](https://github.com/DorskFR/shop/actions/workflows/ci.yml)
@@ -8,7 +8,12 @@ Searches Amazon Japan and Rakuten Ichiba from the terminal: prices, ratings, spe
 
 ![shop searching Amazon for electric kettles, showing one product's details, then searching Rakuten sorted by reviews](docs/assets/demo.gif)
 
-Amazon has no free product API, so `shop` parses the public amazon.co.jp pages over plain HTTPS. Rakuten goes through its official Ichiba Item Search API.
+Results come back as text or JSON: prices, ratings, specs and top reviews. No browser, no API key except Rakuten's free one.
+
+| Connector | Source |
+|---|---|
+| `amazon` | Public amazon.co.jp pages |
+| `rakuten` | Rakuten Ichiba Item Search API |
 
 ```sh
 shop amazon search 電気ケトル --no-ads     # results with price, list price, rating, badges

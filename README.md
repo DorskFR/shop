@@ -4,7 +4,7 @@ Searches Japanese shops with pure HTTP calls, fast and lightweight.
 
 [![release](https://img.shields.io/github/v/release/DorskFR/shop)](https://github.com/DorskFR/shop/releases/latest)
 [![CI](https://github.com/DorskFR/shop/actions/workflows/ci.yml/badge.svg)](https://github.com/DorskFR/shop/actions/workflows/ci.yml)
-[![license](https://img.shields.io/github/license/DorskFR/shop)](LICENSE)
+[![license](https://img.shields.io/github/license/DorskFR/shop?style=flat)](LICENSE)
 
 ![shop searching Amazon for electric kettles, showing one product's details, then searching Rakuten sorted by reviews](docs/assets/demo.gif)
 

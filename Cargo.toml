@@ -2,7 +2,7 @@
 name = "shop"
 version = "0.3.0"
 edition = "2024"
-description = "Searches Amazon Japan and Rakuten Ichiba from the terminal: prices, ratings, specs and top reviews as text or JSON."
+description = "Searches Japanese shops with pure HTTP calls, fast and lightweight."
 license = "MIT"
 repository = "https://github.com/DorskFR/shop"
 

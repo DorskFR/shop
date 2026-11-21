@@ -12,7 +12,7 @@ use shop::{
 #[derive(Parser)]
 #[command(
     version,
-    about = "Searches Amazon Japan and Rakuten Ichiba: prices, ratings, specs and top reviews as text or JSON"
+    about = "Searches Japanese shops with pure HTTP calls. Connectors: amazon (amazon.co.jp), rakuten (Rakuten Ichiba)"
 )]
 struct Cli {
     #[arg(long, global = true, help = "Print JSON instead of text")]

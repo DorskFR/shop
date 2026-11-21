@@ -31,6 +31,16 @@ Prebuilt binaries for Linux (amd64, arm64) and macOS (arm64) are on the [release
 cargo install --git https://github.com/DorskFR/shop
 ```
 
+Shell completion:
+
+```sh
+shop completions bash > ~/.local/share/bash-completion/completions/shop
+shop completions zsh > "${fpath[1]}/_shop"
+shop completions fish > ~/.config/fish/completions/shop.fish
+```
+
+`shop update` installs the latest release after checking its SHA-256. Interactive runs print a notice once a day when a newer release exists; `SHOP_NO_UPDATE_CHECK=1` turns it off.
+
 ## Quick start
 
 ```console

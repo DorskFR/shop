@@ -9,6 +9,8 @@
 | `shop amazon reviews <asin\|url>` | Top reviews: id, author, rating, title, date, verified purchase, variant, helpful votes, body |
 | `shop rakuten search <query>` | Total count, page, page count, items: code, name, URL, price, shop, rating, rating count, stock, postage included, point rate, catch copy, caption, images |
 | `shop rakuten item <shop:itemid>` | One item, same fields |
+| `shop completions <bash\|zsh\|fish\|elvish\|powershell>` | Completion script on stdout |
+| `shop update [--check]` | Installs the latest GitHub release after checking its SHA-256; `--check` only reports |
 
 ## Options
 
@@ -24,6 +26,15 @@
 | `--sort` | rakuten search | `standard`, `price-asc`, `price-desc`, `reviews`, `rating`, `newest` |
 | `--min-price`, `--max-price` | rakuten search | Price range in yen |
 | `--in-stock` | rakuten search | Only items in stock |
+
+## Output
+
+Text output is colored when stdout is a terminal. `NO_COLOR=1`, a pipe or `--json` turn color off.
+
+| Variable | Effect |
+|---|---|
+| `NO_COLOR` | Disables color |
+| `SHOP_NO_UPDATE_CHECK=1` | Disables the daily "newer release available" notice |
 
 ## Exit codes
 

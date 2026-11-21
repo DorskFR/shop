@@ -1,13 +1,17 @@
 use std::process::ExitCode;
 
 use anyhow::{Context, Result, bail};
-use clap::{Parser, Subcommand};
+use clap::{CommandFactory, Parser, Subcommand};
+use clap_complete::Shell;
 use serde::Serialize;
 use shop::{
     amazon::{self, Market},
     fetch::{FetchError, Fetcher},
     rakuten,
 };
+
+mod output;
+mod update;
 
 #[derive(Parser)]
 #[command(
@@ -38,6 +42,16 @@ enum Store {
     Rakuten {
         #[command(subcommand)]
         cmd: RakutenCmd,
+    },
+    #[command(
+        about = "Print a shell completion script",
+        long_about = "Print a shell completion script.\n\n  bash: shop completions bash > ~/.local/share/bash-completion/completions/shop\n  zsh:  shop completions zsh > \"${fpath[1]}/_shop\"\n  fish: shop completions fish > ~/.config/fish/completions/shop.fish"
+    )]
+    Completions { shell: Shell },
+    #[command(about = "Update shop to the latest GitHub release (checksum verified)")]
+    Update {
+        #[arg(long, help = "Only report whether a newer release exists")]
+        check: bool,
     },
 }
 
@@ -96,10 +110,17 @@ enum RakutenCmd {
 
 fn main() -> ExitCode {
     let cli = Cli::parse();
-    match run(cli) {
+    let notify =
+        !cli.json && !matches!(cli.store, Store::Completions { .. } | Store::Update { .. });
+    let result = run(cli);
+    if notify {
+        update::notice();
+    }
+    match result {
         Ok(()) => ExitCode::SUCCESS,
         Err(e) => {
-            eprintln!("shop: {e:#}");
+            let red = output::ERROR;
+            anstream::eprintln!("{red}shop:{red:#} {e:#}");
             match e.downcast_ref::<FetchError>() {
                 Some(FetchError::Blocked(_)) => ExitCode::from(3),
                 Some(FetchError::NotFound(_)) => ExitCode::from(4),
@@ -112,6 +133,13 @@ fn main() -> ExitCode {
 fn run(cli: Cli) -> Result<()> {
     let json = cli.json;
     match cli.store {
+        Store::Completions { shell } => {
+            let mut cmd = Cli::command();
+            let name = cmd.get_name().to_string();
+            clap_complete::generate(shell, &mut cmd, name, &mut std::io::stdout());
+            Ok(())
+        }
+        Store::Update { check } => update::run(check),
         Store::Amazon { market, cmd } => {
             let fetcher = Fetcher::new(cli.verbose);
             match cmd {
@@ -137,15 +165,15 @@ fn run(cli: Cli) -> Result<()> {
                             "no search results found on the page (layout changed or empty result)"
                         );
                     }
-                    emit(json, &results, || print_search(&results))
+                    emit(json, &results, || output::search(&results))
                 }
                 AmazonCmd::Item { asin } => {
                     let item = fetch_item(&fetcher, market, &asin)?;
-                    emit(json, &item, || print_item(&item))
+                    emit(json, &item, || output::item(&item))
                 }
                 AmazonCmd::Reviews { asin } => {
                     let item = fetch_item(&fetcher, market, &asin)?;
-                    emit(json, &item.reviews, || print_reviews(&item))
+                    emit(json, &item.reviews, || output::reviews(&item))
                 }
             }
         }
@@ -174,7 +202,7 @@ fn run(cli: Cli) -> Result<()> {
                         ..Default::default()
                     };
                     let res = rakuten::search(&fetcher, &creds, &q)?;
-                    emit(json, &res, || print_rakuten_search(&res))
+                    emit(json, &res, || output::rakuten_search(&res))
                 }
                 RakutenCmd::Item { item_code } => {
                     let q = rakuten::Query {
@@ -188,7 +216,7 @@ fn run(cli: Cli) -> Result<()> {
                         .into_iter()
                         .next()
                         .with_context(|| format!("no Rakuten item with code {item_code}"))?;
-                    emit(json, &item, || print_rakuten_item(&item))
+                    emit(json, &item, || output::rakuten_item(&item))
                 }
             }
         }
@@ -237,176 +265,4 @@ fn emit<T: Serialize>(json: bool, value: &T, text: impl FnOnce()) -> Result<()> 
         text();
     }
     Ok(())
-}
-
-fn stars(rating: Option<f64>, count: Option<u64>) -> String {
-    match (rating, count) {
-        (Some(r), Some(c)) => format!("★{r:.1} ({c})"),
-        (Some(r), None) => format!("★{r:.1}"),
-        (None, Some(c)) => format!("({c} ratings)"),
-        (None, None) => "no rating".into(),
-    }
-}
-
-fn print_search(results: &[amazon::SearchResult]) {
-    for (i, r) in results.iter().enumerate() {
-        let mut head = format!(
-            "{:>2}. {}  {}",
-            i + 1,
-            r.price.as_deref().unwrap_or("no price"),
-            stars(r.rating, r.rating_count)
-        );
-        if let Some(lp) = &r.list_price {
-            head.push_str(&format!("  list {lp}"));
-        }
-        if r.sponsored {
-            head.push_str("  [sponsored]");
-        }
-        for b in &r.badges {
-            head.push_str(&format!("  [{b}]"));
-        }
-        println!("{head}");
-        println!("    {}", r.title);
-        if let Some(b) = &r.bought_past_month {
-            println!("    {b}");
-        }
-        println!("    {}", r.url);
-    }
-}
-
-fn print_item(item: &amazon::Item) {
-    println!("{}", item.title);
-    println!("{}", item.url);
-    let field = |k: &str, v: &Option<String>| {
-        if let Some(v) = v {
-            println!("{k:<13}{v}");
-        }
-    };
-    field("brand", &item.brand);
-    field("price", &item.price);
-    field("list price", &item.list_price);
-    field("availability", &item.availability);
-    field("seller", &item.seller);
-    println!("{:<13}{}", "rating", stars(item.rating, item.rating_count));
-    if !item.histogram.is_empty() {
-        let h: Vec<String> = item
-            .histogram
-            .iter()
-            .map(|r| format!("{}★ {}%", r.stars, r.percent))
-            .collect();
-        println!("{:<13}{}", "", h.join("  "));
-    }
-    if !item.categories.is_empty() {
-        println!("{:<13}{}", "category", item.categories.join(" › "));
-    }
-    if !item.features.is_empty() {
-        println!("\nfeatures:");
-        for f in &item.features {
-            println!("  - {f}");
-        }
-    }
-    if !item.details.is_empty() {
-        println!("\ndetails:");
-        for (k, v) in &item.details {
-            println!("  {k}: {v}");
-        }
-    }
-    if !item.reviews.is_empty() {
-        println!(
-            "\n{} top reviews (shop amazon reviews {})",
-            item.reviews.len(),
-            item.asin
-        );
-    }
-}
-
-fn print_reviews(item: &amazon::Item) {
-    println!("{}  {}", item.title, stars(item.rating, item.rating_count));
-    for r in &item.reviews {
-        println!();
-        let rating = r.rating.map(|x| format!("★{x:.0}")).unwrap_or_default();
-        println!(
-            "{rating} {}{}",
-            r.title.as_deref().unwrap_or(""),
-            if r.verified {
-                "  [verified purchase]"
-            } else {
-                ""
-            }
-        );
-        let by: Vec<&str> = [r.author.as_deref(), r.date.as_deref(), r.variant.as_deref()]
-            .into_iter()
-            .flatten()
-            .collect();
-        println!("{}", by.join(" · "));
-        println!("{}", r.body);
-        if let Some(h) = &r.helpful {
-            println!("({h})");
-        }
-    }
-}
-
-fn print_rakuten_search(res: &rakuten::SearchPage) {
-    println!(
-        "{} results, page {}/{}",
-        res.count, res.page, res.page_count
-    );
-    for (i, it) in res.items.iter().enumerate() {
-        let mut head = format!(
-            "{:>2}. {}  ★{:.2} ({})  {}",
-            i + 1,
-            yen(it.price),
-            it.rating,
-            it.rating_count,
-            it.shop
-        );
-        if it.postage_included {
-            head.push_str("  [送料込]");
-        }
-        if !it.in_stock {
-            head.push_str("  [out of stock]");
-        }
-        println!("{head}");
-        println!("    {}", it.name);
-        println!("    {}  ({})", it.url, it.item_code);
-    }
-}
-
-fn print_rakuten_item(it: &rakuten::Item) {
-    println!("{}", it.name);
-    println!("{}", it.url);
-    println!("{:<13}{}", "price", yen(it.price));
-    println!("{:<13}{} ({})", "shop", it.shop, it.shop_code);
-    println!("{:<13}★{:.2} ({})", "rating", it.rating, it.rating_count);
-    println!("{:<13}{}", "in stock", it.in_stock);
-    println!("{:<13}{}", "postage incl.", it.postage_included);
-    println!("{:<13}{}x", "points", it.point_rate);
-    if let Some(c) = &it.catchcopy {
-        println!("\n{c}");
-    }
-    if let Some(c) = &it.caption {
-        println!("\n{c}");
-    }
-}
-
-fn yen(n: u64) -> String {
-    let digits = n.to_string();
-    let mut out = String::from("￥");
-    for (i, c) in digits.chars().enumerate() {
-        if i > 0 && (digits.len() - i).is_multiple_of(3) {
-            out.push(',');
-        }
-        out.push(c);
-    }
-    out
-}
-
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn yen() {
-        assert_eq!(super::yen(4980), "￥4,980");
-        assert_eq!(super::yen(1234567), "￥1,234,567");
-        assert_eq!(super::yen(980), "￥980");
-    }
 }

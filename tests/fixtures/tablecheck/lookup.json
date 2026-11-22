@@ -1,0 +1,235 @@
+{
+ "root": {
+  "id": "toplevel",
+  "relevance": 1.0,
+  "fields": {
+   "totalCount": 48,
+   "searchGroup": 0
+  },
+  "coverage": {
+   "coverage": 100,
+   "documents": 11465,
+   "full": true,
+   "nodes": 1,
+   "results": 1,
+   "resultsFull": 1
+  },
+  "children": [
+   {
+    "id": "index:search/0/6e3ebb16f008873bb5cc5a1d",
+    "relevance": 37.179311917997566,
+    "source": "search",
+    "fields": {
+     "matchfeatures": {
+      "location_query_coverage": 0.0,
+      "name_coverage": 0.5,
+      "query_coverage": 1.0
+     },
+     "sddocname": "venue",
+     "id": "64d2ec30a115c8000af3562c",
+     "slug": "sushimolinari",
+     "name": "Sushi Molinari",
+     "names": {
+      "ko": "스시 모리 나리",
+      "zh-TW": "壽司森成",
+      "ja": "鮨もりなり",
+      "en": "Sushi Molinari",
+      "it": "Sushi Molinari",
+      "zh-CN": "寿司森成"
+     },
+     "headlines": {
+      "en": "Edomae Sushi and Japanese Art",
+      "it": "Edomae Sushi e arte giapponese",
+      "ja": "鮨を食べに、美術品のある　築地へ"
+     },
+     "image": "https://cdn0.tablecheck.com/images/654e0aee37b7ad00c9957d99/images/lg/e93a5bc9.jpg?1699613422",
+     "photos": [
+      "https://cdn0.tablecheck.com/images/654e0b08916f140116954dc4/images/lg/bdbd48bd.jpg?1699613449"
+     ],
+     "address": {
+      "en": "2-14-3 Tsukiji, Chuo-ku, Tokyo",
+      "ja": "東京都, 中央区, 築地2-14-3"
+     },
+     "area": {
+      "id": "area:16170475",
+      "names": {
+       "en": "Tsukiji",
+       "ko": "츠키지",
+       "zh-TW": "Tsukiji",
+       "zh-CN": "Tsukiji",
+       "ja": "築地"
+      }
+     },
+     "nearest_station": {
+      "id": "station:n1926355405",
+      "names": {
+       "en": "Tsukiji",
+       "ko": "쓰키지",
+       "zh-TW": "築地",
+       "zh-CN": "筑地",
+       "ja": "築地"
+      },
+      "location": {
+       "lat": 35.668085,
+       "lng": 139.772592
+      },
+      "lines": [
+       {
+        "id": "line:r8026149",
+        "names": {
+         "en": "Tokyo Metro Hibiya Line",
+         "ko": "도쿄메트로 히비야선",
+         "zh-TW": "Tokyo Metro Hibiya Line",
+         "zh-CN": "Tokyo Metro Hibiya Line",
+         "ja": "東京メトロ日比谷線"
+        },
+        "colour": "#B5B5AC",
+        "code": "H"
+       }
+      ],
+      "distance_m": 187,
+      "walk_minutes": 3
+     },
+     "location": {
+      "lat": 35.667508,
+      "lng": 139.770643
+     },
+     "time_zone": "Asia/Tokyo",
+     "booking_page_mode": "v1",
+     "cuisines": [
+      "sushi",
+      "seafood"
+     ],
+     "features": [
+      "events",
+      "quiet"
+     ],
+     "service_times": [
+      "lunch",
+      "dinner"
+     ],
+     "booking_options": [
+      "points_redemption"
+     ],
+     "service_modes": [
+      "dining"
+     ],
+     "min_pax": 1,
+     "max_pax": 5,
+     "currency": "JPY",
+     "budget_lunch_avg": 12500.0,
+     "budget_dinner_avg": 17500.0,
+     "price_band_dinner": "10000-20000",
+     "price_band_lunch": "10000-20000"
+    }
+   },
+   {
+    "id": "index:search/0/7926ab53a89839b6476b688f",
+    "relevance": 37.179311917997566,
+    "source": "search",
+    "fields": {
+     "matchfeatures": {
+      "location_query_coverage": 0.0,
+      "name_coverage": 0.5,
+      "query_coverage": 1.0
+     },
+     "sddocname": "venue",
+     "id": "677de1ef004caf14c893fb8b",
+     "slug": "sushi-shiono",
+     "name": "Sushi Shiono",
+     "names": {
+      "en": "Sushi Shiono",
+      "ja": "寿司しおの"
+     },
+     "headlines": {
+      "ko": "천연물의 주먹을 고집하는 「진짜」의 맛",
+      "th": "รสชาติ “ของแท้” โดยเน้นวัตถุดิบจากธรรมชาติ",
+      "zh-TW": "注重天然產品的「正宗」口味",
+      "ja": "天然物の握りにこだわる「本物」の味",
+      "en": "Authentic taste, made with only natural ingredients",
+      "zh-CN": "注重天然成分的“正宗”口味"
+     },
+     "image": "https://cdn0.tablecheck.com/images/677debb95c3cb6e1cb14ce63/images/lg/77619a1e.jpg?1736305593",
+     "photos": [
+      "https://cdn1.tablecheck.com/images/677deba9260f216759442d68/images/lg/af278d85.jpg?1736305577"
+     ],
+     "address": {
+      "en": "2-10-8 Yaesu, Chuo-ku, Tokyo",
+      "ja": "東京都, 中央区, 八重洲2-10-8"
+     },
+     "area": {
+      "id": "area:16170193",
+      "names": {
+       "en": "Yaesu",
+       "ko": "야에스",
+       "zh-TW": "Yaesu",
+       "zh-CN": "Yaesu",
+       "ja": "八重洲"
+      }
+     },
+     "nearest_station": {
+      "id": "station:n6333133527",
+      "names": {
+       "en": "Ginza 1-chome",
+       "ko": "긴자1초메",
+       "zh-TW": "銀座一丁目",
+       "zh-CN": "银座一丁目",
+       "ja": "銀座一丁目"
+      },
+      "location": {
+       "lat": 35.674347,
+       "lng": 139.767033
+      },
+      "lines": [
+       {
+        "id": "line:r8026115",
+        "names": {
+         "en": "Tokyo Metro Yūrakuchō Line",
+         "ko": "도쿄메트로 유라쿠초선",
+         "zh-TW": "Tokyo Metro Yūrakuchō Line",
+         "zh-CN": "Tokyo Metro Yūrakuchō Line",
+         "ja": "東京メトロ有楽町線"
+        },
+        "colour": "#C1A470",
+        "code": "Y"
+       }
+      ],
+      "distance_m": 186,
+      "walk_minutes": 3
+     },
+     "location": {
+      "lat": 35.67589,
+      "lng": 139.767818
+     },
+     "time_zone": "Asia/Tokyo",
+     "booking_page_mode": "v2",
+     "cuisines": [
+      "sushi",
+      "seafood"
+     ],
+     "service_times": [
+      "lunch",
+      "dinner"
+     ],
+     "booking_options": [
+      "points_redemption"
+     ],
+     "service_modes": [
+      "dining"
+     ],
+     "min_pax": 2,
+     "max_pax": 9,
+     "currency": "JPY",
+     "budget_lunch_avg": 7500.0,
+     "budget_dinner_avg": 17500.0,
+     "price_band_dinner": "10000-20000",
+     "price_band_lunch": "6000-10000",
+     "seating": [
+      "private_room",
+      "counter"
+     ]
+    }
+   }
+  ]
+ }
+}

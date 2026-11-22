@@ -7,9 +7,9 @@ use serde::Serialize;
 use shop::{
     amazon::{self, Market},
     fetch::{FetchError, Fetcher},
-    iherb, ikea, nitori,
+    hotpepper, iherb, ikea, nitori,
     product::{self, Connector},
-    rakuten, uniqlo,
+    rakuten, tabelog, tablecheck, uniqlo, venue,
 };
 
 mod output;
@@ -18,7 +18,7 @@ mod update;
 #[derive(Parser)]
 #[command(
     version,
-    about = "Searches Japanese shops with pure HTTP calls. Connectors: amazon, rakuten, iherb, ikea, nitori, uniqlo"
+    about = "Searches Japanese shops with pure HTTP calls. Connectors: amazon, rakuten, iherb, ikea, nitori, uniqlo, hotpepper, tabelog, tablecheck"
 )]
 struct Cli {
     #[arg(long, global = true, help = "Print JSON instead of text")]
@@ -64,6 +64,21 @@ enum Store {
     Uniqlo {
         #[command(subcommand)]
         cmd: ShopCmd,
+    },
+    #[command(about = "HotPepper Beauty hair salons and barbers (beauty.hotpepper.jp)")]
+    Hotpepper {
+        #[command(subcommand)]
+        cmd: VenueCmd,
+    },
+    #[command(about = "Tabelog restaurants (tabelog.com)")]
+    Tabelog {
+        #[command(subcommand)]
+        cmd: VenueCmd,
+    },
+    #[command(about = "TableCheck restaurant bookings (tablecheck.com)")]
+    Tablecheck {
+        #[command(subcommand)]
+        cmd: VenueCmd,
     },
     #[command(
         about = "Print a shell completion script",
@@ -149,6 +164,27 @@ enum ShopCmd {
     },
 }
 
+#[derive(Subcommand)]
+enum VenueCmd {
+    #[command(about = "Search places")]
+    Search {
+        query: Vec<String>,
+        #[arg(long, short, help = "Area, station or prefecture, e.g. 渋谷")]
+        area: Option<String>,
+        #[arg(long, default_value_t = 1)]
+        page: u32,
+        #[arg(long, short = 'n', help = "Show at most N results")]
+        limit: Option<u32>,
+        #[arg(long, value_enum, default_value = "relevance")]
+        sort: venue::Sort,
+    },
+    #[command(about = "Place details: rating, access, hours, budget, menus")]
+    Item {
+        #[arg(help = "Place id or URL")]
+        id: String,
+    },
+}
+
 fn main() -> ExitCode {
     let cli = Cli::parse();
     let notify =
@@ -222,6 +258,9 @@ fn run(cli: Cli) -> Result<()> {
         Store::Ikea { cmd } => run_shop(&ikea::Ikea, cmd, json, cli.verbose),
         Store::Nitori { cmd } => run_shop(&nitori::Nitori, cmd, json, cli.verbose),
         Store::Uniqlo { cmd } => run_shop(&uniqlo::Uniqlo, cmd, json, cli.verbose),
+        Store::Hotpepper { cmd } => run_venue(&hotpepper::HotPepper, cmd, json, cli.verbose),
+        Store::Tabelog { cmd } => run_venue(&tabelog::Tabelog, cmd, json, cli.verbose),
+        Store::Tablecheck { cmd } => run_venue(&tablecheck::TableCheck, cmd, json, cli.verbose),
         Store::Rakuten { cmd } => {
             let fetcher = Fetcher::new(cli.verbose);
             let creds = rakuten_credentials()?;
@@ -293,6 +332,40 @@ fn run_shop(shop: &dyn Connector, cmd: ShopCmd, json: bool, verbose: bool) -> Re
         ShopCmd::Item { id } => {
             let p = shop.item(&fetcher, &id)?;
             emit(json, &p, || output::product(&p))
+        }
+    }
+}
+
+fn run_venue(site: &dyn venue::Connector, cmd: VenueCmd, json: bool, verbose: bool) -> Result<()> {
+    let fetcher = Fetcher::new(verbose);
+    match cmd {
+        VenueCmd::Search {
+            query,
+            area,
+            page,
+            limit,
+            sort,
+        } => {
+            let text = query.join(" ");
+            if text.trim().is_empty() && area.as_deref().is_none_or(|a| a.trim().is_empty()) {
+                bail!("missing search query or --area");
+            }
+            let q = venue::Query {
+                text: text.trim(),
+                area: area.as_deref().map(str::trim).filter(|a| !a.is_empty()),
+                page,
+                limit,
+                sort,
+            };
+            let mut res = site.search(&fetcher, &q)?;
+            if let Some(n) = limit {
+                res.items.truncate(n as usize);
+            }
+            emit(json, &res, || output::venues(&res))
+        }
+        VenueCmd::Item { id } => {
+            let v = site.item(&fetcher, &id)?;
+            emit(json, &v, || output::venue(&v))
         }
     }
 }

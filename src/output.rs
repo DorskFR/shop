@@ -1,6 +1,6 @@
 use anstream::println;
 use anstyle::{AnsiColor, Style};
-use shop::{amazon, product, rakuten};
+use shop::{amazon, product, rakuten, venue};
 
 const PRICE: Style = Style::new()
     .bold()
@@ -24,9 +24,17 @@ fn label(name: &str) -> String {
 }
 
 fn stars(rating: Option<f64>, count: Option<u64>) -> String {
+    stars_with(1, rating, count)
+}
+
+fn venue_stars(rating: Option<f64>, count: Option<u64>) -> String {
+    stars_with(2, rating, count)
+}
+
+fn stars_with(decimals: usize, rating: Option<f64>, count: Option<u64>) -> String {
     let text = match (rating, count) {
-        (Some(r), Some(c)) => format!("★{r:.1} ({c})"),
-        (Some(r), None) => format!("★{r:.1}"),
+        (Some(r), Some(c)) => format!("★{r:.decimals$} ({c})"),
+        (Some(r), None) => format!("★{r:.decimals$}"),
         (None, Some(c)) => format!("({c} ratings)"),
         (None, None) => return paint(DIM, "no rating"),
     };
@@ -289,6 +297,98 @@ pub fn product(p: &product::Product) {
         }
     }
     if let Some(d) = &p.description {
+        println!("\n{d}");
+    }
+}
+
+pub fn venues(res: &venue::SearchPage) {
+    if let Some(total) = res.total {
+        println!(
+            "{}",
+            paint(DIM, &format!("{total} results, page {}", res.page))
+        );
+    }
+    for (i, v) in res.items.iter().enumerate() {
+        let mut head = Vec::new();
+        if v.rating.is_some() || v.rating_count.is_some() {
+            head.push(venue_stars(v.rating, v.rating_count));
+        }
+        if let Some(b) = &v.budget {
+            head.push(paint(PRICE, b));
+        }
+        for b in &v.badges {
+            head.push(paint(BADGE, &format!("[{b}]")));
+        }
+        println!("{:>2}. {}", i + 1, head.join("  "));
+        let mut name = paint(TITLE, &v.name);
+        if !v.genre.is_empty() {
+            name.push_str(&format!("  {}", paint(DIM, &v.genre.join(", "))));
+        }
+        println!("    {name}");
+        if let Some(a) = v.access.as_ref().or(v.area.as_ref()) {
+            println!("    {a}");
+        }
+        println!("    {}", paint(DIM, &v.url));
+    }
+}
+
+pub fn venue(v: &venue::Venue) {
+    println!("{}", paint(TITLE, &v.name));
+    println!("{}", paint(DIM, &v.url));
+    println!("{}{}", label("id"), v.id);
+    if !v.genre.is_empty() {
+        println!("{}{}", label("genre"), v.genre.join(", "));
+    }
+    if v.rating.is_some() || v.rating_count.is_some() {
+        println!(
+            "{}{}",
+            label("rating"),
+            venue_stars(v.rating, v.rating_count)
+        );
+    }
+    let rows = [
+        ("budget", &v.budget),
+        ("area", &v.area),
+        ("address", &v.address),
+        ("access", &v.access),
+        ("hours", &v.hours),
+        ("closed", &v.closed),
+        ("phone", &v.phone),
+        ("booking", &v.booking_url),
+    ];
+    for (name, value) in rows {
+        if let Some(value) = value {
+            let mut lines = value.lines();
+            println!("{}{}", label(name), lines.next().unwrap_or_default());
+            for l in lines {
+                println!("{}{l}", label(""));
+            }
+        }
+    }
+    if !v.badges.is_empty() {
+        println!("{}{}", label("badges"), paint(BADGE, &v.badges.join(", ")));
+    }
+    if !v.details.is_empty() {
+        println!("\n{}", paint(TITLE, "details"));
+        for (k, val) in &v.details {
+            println!("  {}: {val}", paint(DIM, k));
+        }
+    }
+    if !v.menus.is_empty() {
+        println!("\n{}", paint(TITLE, "menus"));
+        for m in &v.menus {
+            let p = match (m.price, &m.price_text) {
+                (Some(p), _) => paint(PRICE, &yen(p)),
+                (None, Some(t)) => paint(PRICE, t),
+                (None, None) => String::new(),
+            };
+            println!("  {p}  {}", m.name);
+            if let Some(d) = &m.description {
+                println!("    {}", paint(DIM, d));
+            }
+        }
+    }
+    if let Some(d) = &v.description {
         println!("\n{d}");
     }
 }

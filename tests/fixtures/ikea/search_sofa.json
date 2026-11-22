@@ -1,0 +1,1256 @@
+{
+ "searchResultPage": {
+  "searchPhrase": "ソファ",
+  "products": {
+   "main": {
+    "items": [
+     {
+      "metadata": "v1;1;PRODUCT;s99484999;products_main;",
+      "product": {
+       "name": "SÖDERHAMN ソーデルハムン",
+       "typeName": "3人掛けコンパクトソファセクション",
+       "itemMeasureReferenceText": "",
+       "mainImageUrl": "https://www.ikea.com/jp/ja/images/products/soederhamn-compact-3-seat-section-fridtuna-light-beige__1577796_pe1033541_s5.jpg",
+       "pipUrl": "https://www.ikea.com/jp/ja/p/soederhamn-compact-3-seat-section-fridtuna-light-beige-s99484999/",
+       "filterClass": "sofa components",
+       "id": "s99484999",
+       "itemNoGlobal": "99484999",
+       "onlineSellable": true,
+       "lastChance": false,
+       "gprDescription": {
+        "numberOfVariants": 6,
+        "variants": [
+         {
+          "id": "s99419428",
+          "pipUrl": "https://www.ikea.com/jp/ja/p/soederhamn-compact-3-seat-section-viarp-beige-brown-s99419428/",
+          "imageUrl": "https://www.ikea.com/jp/ja/images/products/soederhamn-compact-3-seat-section-viarp-beige-brown__1577336_pe1033101_s5.jpg",
+          "imageAlt": "SÖDERHAMN ソーデルハムン 3人掛けコンパクトソファセクション, ヴィーアルプ ベージュ/ブラウン",
+          "availability": [],
+          "ratingValue": 4.4,
+          "ratingCount": 58,
+          "name": "SÖDERHAMN ソーデルハムン",
+          "typeName": "3人掛けコンパクトソファセクション",
+          "itemMeasureReferenceText": "",
+          "mainImageUrl": "https://www.ikea.com/jp/ja/images/products/soederhamn-compact-3-seat-section-viarp-beige-brown__1577336_pe1033101_s5.jpg",
+          "mainImageAlt": "SÖDERHAMN ソーデルハムン 3人掛けコンパクトソファセクション, ヴィーアルプ ベージュ/ブラウン",
+          "itemNoGlobal": "99419428",
+          "onlineSellable": true,
+          "lastChance": false,
+          "badge": {
+           "type": "TOP_SELLER",
+           "text": "人気商品"
+          },
+          "itemNo": "99419428",
+          "itemType": "SPR",
+          "optimizelyAttributes": {
+           "PRODUCT_TYPE": "standard"
+          },
+          "validDesignText": "ヴィーアルプ ベージュ/ブラウン"
+         },
+         {
+          "id": "s79622384",
+          "pipUrl": "https://www.ikea.com/jp/ja/p/soederhamn-compact-3-seat-section-kelinge-beige-s79622384/",
+          "imageUrl": "https://www.ikea.com/jp/ja/images/products/soederhamn-compact-3-seat-section-kelinge-beige__1571831_pe1030412_s5.jpg",
+          "imageAlt": "SÖDERHAMN ソーデルハムン 3人掛けコンパクトソファセクション, ケーリンゲ ベージュ",
+          "availability": [],
+          "ratingValue": 4.4,
+          "ratingCount": 58,
+          "name": "SÖDERHAMN ソーデルハムン",
+          "typeName": "3人掛けコンパクトソファセクション",
+          "itemMeasureReferenceText": "",
+          "mainImageUrl": "https://www.ikea.com/jp/ja/images/products/soederhamn-compact-3-seat-section-kelinge-beige__1571831_pe1030412_s5.jpg",
+          "mainImageAlt": "SÖDERHAMN ソーデルハムン 3人掛けコンパクトソファセクション, ケーリンゲ ベージュ",
+          "itemNoGlobal": "79622384",
+          "onlineSellable": true,
+          "lastChance": false,
+          "itemNo": "79622384",
+          "itemType": "SPR",
+          "optimizelyAttributes": {
+           "PRODUCT_TYPE": "standard"
+          },
+          "validDesignText": "ケーリンゲ ベージュ"
+         }
+        ],
+        "variations": [
+         {
+          "id": "cover",
+          "name": "カバー",
+          "count": 7,
+          "values": [
+           {
+            "name": "グンナレド ベージュ",
+            "products": [
+             "99656976"
+            ]
+           },
+           {
+            "name": "ケーリンゲ ダークイエロー",
+            "products": [
+             "39622381"
+            ]
+           },
+           {
+            "name": "ケーリンゲ ダークブルー",
+            "products": [
+             "99622383"
+            ]
+           },
+           {
+            "name": "ケーリンゲ ベージュ",
+            "products": [
+             "79622384"
+            ]
+           },
+           {
+            "name": "フリードトゥナ ダークグレーブルー",
+            "products": [
+             "19622382"
+            ]
+           },
+           {
+            "name": "フリードトゥナ ライトベージュ",
+            "products": [
+             "99484999"
+            ]
+           },
+           {
+            "name": "ヴィーアルプ ベージュ/ブラウン",
+            "products": [
+             "99419428"
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "colors": [
+        {
+         "name": "ベージュ",
+         "id": "10003",
+         "hex": "f4f3d7"
+        }
+       ],
+       "badge": {
+        "type": "TOP_SELLER",
+        "text": "人気商品"
+       },
+       "tag": "NONE",
+       "quickFacts": [
+        {
+         "type": "FIRMNESS",
+         "id": "59511",
+         "name": "1番やわらかめ",
+         "typeName": "硬さ"
+        }
+       ],
+       "features": [],
+       "availability": [],
+       "ratingValue": 4.4,
+       "ratingCount": 58,
+       "itemNo": "99484999",
+       "itemType": "SPR",
+       "salesPrice": {
+        "currencyCode": "JPY",
+        "numeral": 42990.0,
+        "current": {
+         "prefix": "¥",
+         "wholeNumber": "42,990",
+         "separator": "",
+         "decimals": "",
+         "suffix": "",
+         "isRegularCurrency": false,
+         "style": "SUPER"
+        },
+        "isBreathTaking": false,
+        "discount": "",
+        "tag": "NONE",
+        "priceText": "価格",
+        "tags": [],
+        "tagWithText": {
+         "tag": "NONE"
+        }
+       },
+       "contextualImageUrl": "https://www.ikea.com/jp/ja/images/products/soederhamn-compact-3-seat-section-fridtuna-light-beige__1159115_pe888346_s5.jpg",
+       "contextualImageAlt": "SÖDERHAMN ソーデルハムン 3人掛けコンパクトソファセクション, フリードトゥナ ライトベージュ",
+       "mainImageAlt": "SÖDERHAMN ソーデルハムン 3人掛けコンパクトソファセクション, フリードトゥナ ライトベージュ",
+       "businessStructure": {
+        "homeFurnishingBusinessName": "Living room seating",
+        "homeFurnishingBusinessNo": "01",
+        "productAreaName": "Sofas",
+        "productAreaNo": "0111",
+        "productRangeAreaName": "Sofas",
+        "productRangeAreaNo": "011"
+       },
+       "categoryPath": [
+        {
+         "name": "ソファ＆パーソナルチェア",
+         "key": "700640"
+        },
+        {
+         "name": "ソファ",
+         "key": "fu003"
+        },
+        {
+         "name": "モジュールソファ・組み合わせソファ",
+         "key": "31786"
+        }
+       ],
+       "validDesignText": "フリードトゥナ ライトベージュ",
+       "heroBackoffData": {},
+       "optimizelyAttributes": {
+        "PRODUCT_TYPE": "standard"
+       }
+      },
+      "type": "PRODUCT",
+      "label": "商品",
+      "actionTokens": [],
+      "isBreakout": false
+     },
+     {
+      "metadata": "v1;2;PRODUCT;s69305616;products_main;",
+      "product": {
+       "name": "SÖDERHAMN ソーデルハムン",
+       "typeName": "3人掛けソファセクション",
+       "itemMeasureReferenceText": "",
+       "mainImageUrl": "https://www.ikea.com/jp/ja/images/products/soederhamn-3-seat-section-viarp-beige-brown__1577095_pe1032932_s5.jpg",
+       "pipUrl": "https://www.ikea.com/jp/ja/p/soederhamn-3-seat-section-viarp-beige-brown-s69305616/",
+       "filterClass": "sofa components",
+       "id": "s69305616",
+       "itemNoGlobal": "89305615",
+       "onlineSellable": true,
+       "lastChance": false,
+       "gprDescription": {
+        "numberOfVariants": 14,
+        "variants": [
+         {
+          "id": "s79449643",
+          "pipUrl": "https://www.ikea.com/jp/ja/p/soederhamn-3-seat-section-fridtuna-light-beige-s79449643/",
+          "imageUrl": "https://www.ikea.com/jp/ja/images/products/soederhamn-3-seat-section-fridtuna-light-beige__1057705_pe848919_s5.jpg",
+          "imageAlt": "SÖDERHAMN ソーデルハムン 3人掛けソファセクション, フリードトゥナ ライトベージュ",
+          "availability": [],
+          "ratingValue": 4.1,
+          "ratingCount": 447,
+          "name": "SÖDERHAMN ソーデルハムン",
+          "typeName": "3人掛けソファセクション",
+          "itemMeasureReferenceText": "",
+          "mainImageUrl": "https://www.ikea.com/jp/ja/images/products/soederhamn-3-seat-section-fridtuna-light-beige__1057705_pe848919_s5.jpg",
+          "mainImageAlt": "SÖDERHAMN ソーデルハムン 3人掛けソファセクション, フリードトゥナ ライトベージュ",
+          "itemNoGlobal": "99449642",
+          "onlineSellable": true,
+          "lastChance": false,
+          "itemNo": "79449643",
+          "itemType": "SPR",
+          "optimizelyAttributes": {
+           "PRODUCT_TYPE": "standard"
+          },
+          "validDesignText": "フリードトゥナ ライトベージュ"
+         },
+         {
+          "id": "s29621612",
+          "pipUrl": "https://www.ikea.com/jp/ja/p/soederhamn-3-seat-section-johanneshov-dark-green-s29621612/",
+          "imageUrl": "https://www.ikea.com/jp/ja/images/products/soederhamn-3-seat-section-johanneshov-dark-green__1576754_pe1032689_s5.jpg",
+          "imageAlt": "SÖDERHAMN ソーデルハムン 3人掛けソファセクション, ヨハネスホブ ダークグリーン",
+          "availability": [],
+          "ratingValue": 4.1,
+          "ratingCount": 447,
+          "name": "SÖDERHAMN ソーデルハムン",
+          "typeName": "3人掛けソファセクション",
+          "itemMeasureReferenceText": "",
+          "mainImageUrl": "https://www.ikea.com/jp/ja/images/products/soederhamn-3-seat-section-johanneshov-dark-green__1576754_pe1032689_s5.jpg",
+          "mainImageAlt": "SÖDERHAMN ソーデルハムン 3人掛けソファセクション, ヨハネスホブ ダークグリーン",
+          "itemNoGlobal": "49621611",
+          "onlineSellable": true,
+          "lastChance": false,
+          "itemNo": "29621612",
+          "itemType": "SPR",
+          "optimizelyAttributes": {
+           "PRODUCT_TYPE": "standard"
+          },
+          "validDesignText": "ヨハネスホブ ダークグリーン"
+         }
+        ],
+        "variations": [
+         {
+          "id": "cover",
+          "name": "カバー",
+          "count": 15,
+          "values": [
+           {
+            "name": "アールハムン ダークグレーブルー",
+            "products": [
+             "19621622"
+            ]
+           },
+           {
+            "name": "アールハムン ディープオレンジレッド",
+            "products": [
+             "59621620"
+            ]
+           },
+           {
+            "name": "グランセル ナチュラル",
+            "products": [
+             "69621610"
+            ]
+           },
+           {
+            "name": "グンナレド ベージュ",
+            "products": [
+             "39629146"
+            ]
+           },
+           {
+            "name": "ケーリンゲ ダークイエロー",
+            "products": [
+             "59621601"
+            ]
+           },
+           {
+            "name": "ケーリンゲ ダークブルー",
+            "products": [
+             "99621604"
+            ]
+           },
+           {
+            "name": "ケーリンゲ ベージュ",
+            "products": [
+             "29621607"
+            ]
+           },
+           {
+            "name": "トネルード グレー",
+            "products": [
+             "19452054"
+            ]
+           },
+           {
+            "name": "フリードトゥナ ダークグレー",
+            "products": [
+             "49449569"
+            ]
+           },
+           {
+            "name": "フリードトゥナ ダークグレーブルー",
+            "products": [
+             "39621598"
+            ]
+           },
+           {
+            "name": "フリードトゥナ ライトベージュ",
+            "products": [
+             "79449643"
+            ]
+           },
+           {
+            "name": "ヨハネスホブ オフホワイト",
+            "products": [
+             "89621614"
+            ]
+           },
+           {
+            "name": "ヨハネスホブ ダークグリーン",
+            "products": [
+             "29621612"
+            ]
+           },
+           {
+            "name": "ヨハネスホブ ブラウンベージュ",
+            "products": [
+             "79621624"
+            ]
+           },
+           {
+            "name": "ヴィーアルプ ベージュ/ブラウン",
+            "products": [
+             "69305616"
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "colors": [
+        {
+         "name": "ベージュ",
+         "id": "10003",
+         "hex": "f4f3d7"
+        },
+        {
+         "name": "ブラウン",
+         "id": "10019",
+         "hex": "814820"
+        }
+       ],
+       "badge": {
+        "type": "TOP_SELLER",
+        "text": "人気商品"
+       },
+       "tag": "NONE",
+       "quickFacts": [
+        {
+         "type": "FIRMNESS",
+         "id": "59511",
+         "name": "1番やわらかめ",
+         "typeName": "硬さ"
+        }
+       ],
+       "features": [],
+       "availability": [],
+       "ratingValue": 4.1,
+       "ratingCount": 447,
+       "itemNo": "69305616",
+       "itemType": "SPR",
+       "salesPrice": {
+        "currencyCode": "JPY",
+        "numeral": 69990.0,
+        "current": {
+         "prefix": "¥",
+         "wholeNumber": "69,990",
+         "separator": "",
+         "decimals": "",
+         "suffix": "",
+         "isRegularCurrency": false,
+         "style": "SUPER"
+        },
+        "isBreathTaking": false,
+        "discount": "",
+        "tag": "NONE",
+        "priceText": "価格",
+        "tags": [],
+        "tagWithText": {
+         "tag": "NONE"
+        }
+       },
+       "contextualImageUrl": "https://www.ikea.com/jp/ja/images/products/soederhamn-3-seat-section-viarp-beige-brown__0802824_pe768608_s5.jpg",
+       "contextualImageAlt": "SÖDERHAMN ソーデルハムン 3人掛けソファセクション, ヴィーアルプ ベージュ/ブラウン",
+       "mainImageAlt": "SÖDERHAMN ソーデルハムン 3人掛けソファセクション, ヴィーアルプ ベージュ/ブラウン",
+       "businessStructure": {
+        "homeFurnishingBusinessName": "Living room seating",
+        "homeFurnishingBusinessNo": "01",
+        "productAreaName": "Sofas",
+        "productAreaNo": "0111",
+        "productRangeAreaName": "Sofas",
+        "productRangeAreaNo": "011"
+       },
+       "categoryPath": [
+        {
+         "name": "ソファ＆パーソナルチェア",
+         "key": "700640"
+        },
+        {
+         "name": "ソファ",
+         "key": "fu003"
+        },
+        {
+         "name": "3人掛けソファ",
+         "key": "10670"
+        }
+       ],
+       "validDesignText": "ヴィーアルプ ベージュ/ブラウン",
+       "heroBackoffData": {},
+       "optimizelyAttributes": {
+        "PRODUCT_TYPE": "standard"
+       }
+      },
+      "type": "PRODUCT",
+      "label": "商品",
+      "actionTokens": [],
+      "isBreakout": false
+     },
+     {
+      "metadata": "v1;3;PRODUCT;10489009;products_main;",
+      "product": {
+       "name": "GLOSTAD グロスタード",
+       "typeName": "2人掛けソファ",
+       "itemMeasureReferenceText": "",
+       "mainImageUrl": "https://www.ikea.com/jp/ja/images/products/glostad-2-seat-sofa-knisa-dark-grey__1577178_pe1033002_s5.jpg",
+       "pipUrl": "https://www.ikea.com/jp/ja/p/glostad-2-seat-sofa-knisa-dark-grey-10489009/",
+       "filterClass": "sofas",
+       "id": "10489009",
+       "itemNoGlobal": "50489012",
+       "onlineSellable": true,
+       "lastChance": false,
+       "gprDescription": {
+        "numberOfVariants": 1,
+        "variants": [
+         {
+          "id": "00488821",
+          "pipUrl": "https://www.ikea.com/jp/ja/p/glostad-2-seat-sofa-knisa-medium-blue-00488821/",
+          "imageUrl": "https://www.ikea.com/jp/ja/images/products/glostad-2-seat-sofa-knisa-medium-blue__1578500_pe1034143_s5.jpg",
+          "imageAlt": "GLOSTAD グロスタード 2人掛けソファ, クニーサ ミディアムブルー",
+          "availability": [],
+          "ratingValue": 4.5,
+          "ratingCount": 642,
+          "name": "GLOSTAD グロスタード",
+          "typeName": "2人掛けソファ",
+          "itemMeasureReferenceText": "",
+          "mainImageUrl": "https://www.ikea.com/jp/ja/images/products/glostad-2-seat-sofa-knisa-medium-blue__1578500_pe1034143_s5.jpg",
+          "mainImageAlt": "GLOSTAD グロスタード 2人掛けソファ, クニーサ ミディアムブルー",
+          "itemNoGlobal": "10465824",
+          "onlineSellable": true,
+          "lastChance": false,
+          "itemNo": "00488821",
+          "itemType": "ART",
+          "optimizelyAttributes": {
+           "PRODUCT_TYPE": "standard"
+          },
+          "validDesignText": "クニーサ ミディアムブルー"
+         }
+        ],
+        "variations": [
+         {
+          "id": "cover",
+          "name": "カバー",
+          "count": 2,
+          "values": [
+           {
+            "name": "クニーサ ダークグレー",
+            "products": [
+             "10489009"
+            ]
+           },
+           {
+            "name": "クニーサ ミディアムブルー",
+            "products": [
+             "00488821"
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "colors": [
+        {
+         "name": "グレー",
+         "id": "10028",
+         "hex": "949494"
+        }
+       ],
+       "tag": "NONE",
+       "quickFacts": [
+        {
+         "type": "FIRMNESS",
+         "id": "47465",
+         "name": "ふつう",
+         "typeName": "硬さ"
+        }
+       ],
+       "features": [],
+       "availability": [],
+       "ratingValue": 4.5,
+       "ratingCount": 642,
+       "itemNo": "10489009",
+       "itemType": "ART",
+       "salesPrice": {
+        "currencyCode": "JPY",
+        "numeral": 11990.0,
+        "current": {
+         "prefix": "¥",
+         "wholeNumber": "11,990",
+         "separator": "",
+         "decimals": "",
+         "suffix": "",
+         "isRegularCurrency": false,
+         "style": "SUPER"
+        },
+        "isBreathTaking": true,
+        "discount": "",
+        "tag": "NONE",
+        "priceText": "価格",
+        "tags": [],
+        "tagWithText": {
+         "tag": "NONE"
+        }
+       },
+       "contextualImageUrl": "https://www.ikea.com/jp/ja/images/products/glostad-2-seat-sofa-knisa-dark-grey__0987393_pe817515_s5.jpg",
+       "contextualImageAlt": "GLOSTAD グロスタード 2人掛けソファ, クニーサ ダークグレー",
+       "mainImageAlt": "GLOSTAD グロスタード 2人掛けソファ, クニーサ ダークグレー",
+       "businessStructure": {
+        "homeFurnishingBusinessName": "Living room seating",
+        "homeFurnishingBusinessNo": "01",
+        "productAreaName": "Sofas",
+        "productAreaNo": "0111",
+        "productRangeAreaName": "Sofas",
+        "productRangeAreaNo": "011"
+       },
+       "categoryPath": [
+        {
+         "name": "ソファ＆パーソナルチェア",
+         "key": "700640"
+        },
+        {
+         "name": "ソファ",
+         "key": "fu003"
+        },
+        {
+         "name": "2人掛けソファ・コンパクトソファ",
+         "key": "10668"
+        }
+       ],
+       "validDesignText": "クニーサ ダークグレー",
+       "heroBackoffData": {},
+       "optimizelyAttributes": {
+        "PRODUCT_TYPE": "standard"
+       }
+      },
+      "type": "PRODUCT",
+      "label": "商品",
+      "actionTokens": [],
+      "isBreakout": false
+     },
+     {
+      "metadata": "v1;9;PRODUCT;s29509026;products_main;",
+      "product": {
+       "name": "EKTORP エークトルプ",
+       "typeName": "2人掛けソファ",
+       "itemMeasureReferenceText": "",
+       "mainImageUrl": "https://www.ikea.com/jp/ja/images/products/ektorp-2-seat-sofa-kilanda-light-beige__1577714_pe1033461_s5.jpg",
+       "pipUrl": "https://www.ikea.com/jp/ja/p/ektorp-2-seat-sofa-kilanda-light-beige-s29509026/",
+       "filterClass": "sofas",
+       "id": "s29509026",
+       "itemNoGlobal": "49509025",
+       "onlineSellable": true,
+       "lastChance": false,
+       "gprDescription": {
+        "numberOfVariants": 8,
+        "variants": [
+         {
+          "id": "s19509017",
+          "pipUrl": "https://www.ikea.com/jp/ja/p/ektorp-2-seat-sofa-hakebo-grey-green-s19509017/",
+          "imageUrl": "https://www.ikea.com/jp/ja/images/products/ektorp-2-seat-sofa-hakebo-grey-green__1577713_pe1033460_s5.jpg",
+          "imageAlt": "EKTORP エークトルプ 2人掛けソファ, ハーケボ グレーグリーン",
+          "availability": [],
+          "ratingValue": 4.4,
+          "ratingCount": 422,
+          "name": "EKTORP エークトルプ",
+          "typeName": "2人掛けソファ",
+          "itemMeasureReferenceText": "",
+          "mainImageUrl": "https://www.ikea.com/jp/ja/images/products/ektorp-2-seat-sofa-hakebo-grey-green__1577713_pe1033460_s5.jpg",
+          "mainImageAlt": "EKTORP エークトルプ 2人掛けソファ, ハーケボ グレーグリーン",
+          "itemNoGlobal": "39509016",
+          "onlineSellable": true,
+          "lastChance": false,
+          "itemNo": "19509017",
+          "itemType": "SPR",
+          "optimizelyAttributes": {
+           "PRODUCT_TYPE": "standard"
+          },
+          "validDesignText": "ハーケボ グレーグリーン"
+         },
+         {
+          "id": "s59509020",
+          "pipUrl": "https://www.ikea.com/jp/ja/p/ektorp-2-seat-sofa-karlshov-beige-multicolour-s59509020/",
+          "imageUrl": "https://www.ikea.com/jp/ja/images/products/ektorp-2-seat-sofa-karlshov-beige-multicolour__1194837_pe902083_s5.jpg",
+          "imageAlt": "EKTORP エークトルプ 2人掛けソファ, カルルスホヴ ベージュ/マルチカラー",
+          "availability": [],
+          "ratingValue": 4.4,
+          "ratingCount": 422,
+          "name": "EKTORP エークトルプ",
+          "typeName": "2人掛けソファ",
+          "itemMeasureReferenceText": "",
+          "mainImageUrl": "https://www.ikea.com/jp/ja/images/products/ektorp-2-seat-sofa-karlshov-beige-multicolour__1194837_pe902083_s5.jpg",
+          "mainImageAlt": "EKTORP エークトルプ 2人掛けソファ, カルルスホヴ ベージュ/マルチカラー",
+          "itemNoGlobal": "79509019",
+          "onlineSellable": true,
+          "lastChance": true,
+          "itemNo": "59509020",
+          "itemType": "SPR",
+          "optimizelyAttributes": {
+           "PRODUCT_TYPE": "standard"
+          },
+          "validDesignText": "カルルスホヴ ベージュ/マルチカラー",
+          "lastChanceText": "もうすぐ販売終了"
+         }
+        ],
+        "variations": [
+         {
+          "id": "cover",
+          "name": "カバー",
+          "count": 9,
+          "values": [
+           {
+            "name": "へッメスタ グレーグリーン",
+            "products": [
+             "59628688"
+            ]
+           },
+           {
+            "name": "へッメスタ ライトベージュ",
+            "products": [
+             "19628690"
+            ]
+           },
+           {
+            "name": "カルルスホヴ ベージュ/マルチカラー",
+            "products": [
+             "59509020"
+            ]
+           },
+           {
+            "name": "キランダ グレーブラウン",
+            "products": [
+             "39628694"
+            ]
+           },
+           {
+            "name": "キランダ ライトベージュ",
+            "products": [
+             "29509026"
+            ]
+           },
+           {
+            "name": "ナッゲン ベージュ",
+            "products": [
+             "89628696"
+            ]
+           },
+           {
+            "name": "ハーケボ グレーグリーン",
+            "products": [
+             "19509017"
+            ]
+           },
+           {
+            "name": "ハーケボ ダークグレー",
+            "products": [
+             "89509014"
+            ]
+           },
+           {
+            "name": "モングビーン ブラウン/マルチカラー",
+            "products": [
+             "79620728"
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "colors": [
+        {
+         "name": "ベージュ",
+         "id": "10003",
+         "hex": "f4f3d7"
+        }
+       ],
+       "badge": {
+        "type": "TOP_SELLER",
+        "text": "人気商品"
+       },
+       "tag": "NEW_PRODUCT",
+       "tagText": "New",
+       "quickFacts": [
+        {
+         "type": "FIRMNESS",
+         "id": "59511",
+         "name": "1番やわらかめ",
+         "typeName": "硬さ"
+        }
+       ],
+       "features": [],
+       "availability": [],
+       "ratingValue": 4.4,
+       "ratingCount": 422,
+       "itemNo": "29509026",
+       "itemType": "SPR",
+       "salesPrice": {
+        "currencyCode": "JPY",
+        "numeral": 57990.0,
+        "current": {
+         "prefix": "¥",
+         "wholeNumber": "57,990",
+         "separator": "",
+         "decimals": "",
+         "suffix": "",
+         "isRegularCurrency": false,
+         "style": "SUPER"
+        },
+        "isBreathTaking": false,
+        "discount": "",
+        "tag": "NEW_PRODUCT",
+        "tagText": "New",
+        "priceText": "価格",
+        "tags": [
+         "NEW_PRODUCT"
+        ],
+        "tagWithText": {
+         "tag": "NEW_PRODUCT",
+         "text": "New"
+        }
+       },
+       "contextualImageUrl": "https://www.ikea.com/jp/ja/images/products/ektorp-2-seat-sofa-kilanda-light-beige__1548000_pe1020867_s5.jpg",
+       "contextualImageAlt": "EKTORP エークトルプ 2人掛けソファ, キランダ ライトベージュ",
+       "mainImageAlt": "EKTORP エークトルプ 2人掛けソファ, キランダ ライトベージュ",
+       "businessStructure": {
+        "homeFurnishingBusinessName": "Living room seating",
+        "homeFurnishingBusinessNo": "01",
+        "productAreaName": "Sofas",
+        "productAreaNo": "0111",
+        "productRangeAreaName": "Sofas",
+        "productRangeAreaNo": "011"
+       },
+       "categoryPath": [
+        {
+         "name": "ソファ＆パーソナルチェア",
+         "key": "700640"
+        },
+        {
+         "name": "ソファ",
+         "key": "fu003"
+        },
+        {
+         "name": "2人掛けソファ・コンパクトソファ",
+         "key": "10668"
+        }
+       ],
+       "validDesignText": "キランダ ライトベージュ",
+       "heroBackoffData": {},
+       "optimizelyAttributes": {
+        "PRODUCT_TYPE": "standard"
+       }
+      },
+      "type": "PRODUCT",
+      "label": "商品",
+      "actionTokens": [],
+      "isBreakout": false
+     },
+     {
+      "metadata": "v1;17;PRODUCT;s19471463;products_main;",
+      "product": {
+       "name": "JÄTTEBO イェッテボ",
+       "typeName": "1.5人掛けモジュール 収納付き",
+       "itemMeasureReferenceText": "",
+       "mainImageUrl": "https://www.ikea.com/jp/ja/images/products/jaettebo-1-5-seat-module-with-storage-samsala-dark-yellow-green__1577478_pe1033229_s5.jpg",
+       "pipUrl": "https://www.ikea.com/jp/ja/p/jaettebo-1-5-seat-module-with-storage-samsala-dark-yellow-green-s19471463/",
+       "filterClass": "sofa components",
+       "id": "s19471463",
+       "itemNoGlobal": "19471458",
+       "onlineSellable": true,
+       "lastChance": false,
+       "gprDescription": {
+        "numberOfVariants": 8,
+        "variants": [
+         {
+          "id": "s69471465",
+          "pipUrl": "https://www.ikea.com/jp/ja/p/jaettebo-1-5-seat-module-with-storage-samsala-grey-beige-s69471465/",
+          "imageUrl": "https://www.ikea.com/jp/ja/images/products/jaettebo-1-5-seat-module-with-storage-samsala-grey-beige__1577513_pe1033267_s5.jpg",
+          "imageAlt": "JÄTTEBO イェッテボ 1.5人掛けモジュール 収納付き, サムサーラ グレーベージュ",
+          "availability": [],
+          "ratingValue": 3.8,
+          "ratingCount": 73,
+          "name": "JÄTTEBO イェッテボ",
+          "typeName": "1.5人掛けモジュール 収納付き",
+          "itemMeasureReferenceText": "",
+          "mainImageUrl": "https://www.ikea.com/jp/ja/images/products/jaettebo-1-5-seat-module-with-storage-samsala-grey-beige__1577513_pe1033267_s5.jpg",
+          "mainImageAlt": "JÄTTEBO イェッテボ 1.5人掛けモジュール 収納付き, サムサーラ グレーベージュ",
+          "itemNoGlobal": "89471474",
+          "onlineSellable": true,
+          "lastChance": false,
+          "itemNo": "69471465",
+          "itemType": "SPR",
+          "optimizelyAttributes": {
+           "PRODUCT_TYPE": "standard"
+          },
+          "validDesignText": "サムサーラ グレーベージュ"
+         },
+         {
+          "id": "s79607538",
+          "pipUrl": "https://www.ikea.com/jp/ja/p/jaettebo-1-5-seat-module-with-storage-axvall-dark-grey-blue-s79607538/",
+          "imageUrl": "https://www.ikea.com/jp/ja/images/products/jaettebo-1-5-seat-module-with-storage-axvall-dark-grey-blue__1578427_pe1034063_s5.jpg",
+          "imageAlt": "JÄTTEBO イェッテボ 1.5人掛けモジュール 収納付き, アクスヴァラ ダークグレーブルー",
+          "availability": [],
+          "ratingValue": 3.8,
+          "ratingCount": 73,
+          "name": "JÄTTEBO イェッテボ",
+          "typeName": "1.5人掛けモジュール 収納付き",
+          "itemMeasureReferenceText": "",
+          "mainImageUrl": "https://www.ikea.com/jp/ja/images/products/jaettebo-1-5-seat-module-with-storage-axvall-dark-grey-blue__1578427_pe1034063_s5.jpg",
+          "mainImageAlt": "JÄTTEBO イェッテボ 1.5人掛けモジュール 収納付き, アクスヴァラ ダークグレーブルー",
+          "itemNoGlobal": "19607541",
+          "onlineSellable": true,
+          "lastChance": false,
+          "itemNo": "79607538",
+          "itemType": "SPR",
+          "optimizelyAttributes": {
+           "PRODUCT_TYPE": "standard"
+          },
+          "validDesignText": "アクスヴァラ ダークグレーブルー"
+         }
+        ],
+        "variations": [
+         {
+          "id": "cover",
+          "name": "カバー",
+          "count": 9,
+          "values": [
+           {
+            "name": "アクスヴァラ オフホワイト",
+            "products": [
+             "99607542"
+            ]
+           },
+           {
+            "name": "アクスヴァラ ダークグレーブルー",
+            "products": [
+             "79607538"
+            ]
+           },
+           {
+            "name": "サムサーラ イエローブラウン",
+            "products": [
+             "99607561"
+            ]
+           },
+           {
+            "name": "サムサーラ グレーベージュ",
+            "products": [
+             "69471465"
+            ]
+           },
+           {
+            "name": "サムサーラ ダークイエローグリーン",
+            "products": [
+             "19471463"
+            ]
+           },
+           {
+            "name": "サムサーラ ダークブラウン",
+            "products": [
+             "29607550"
+            ]
+           },
+           {
+            "name": "サムサーラ ダークブルー",
+            "products": [
+             "09607527"
+            ]
+           },
+           {
+            "name": "サムサーラ ブラウンレッド",
+            "products": [
+             "09607546"
+            ]
+           },
+           {
+            "name": "ヨハネスホブ ブラウンベージュ",
+            "products": [
+             "69607534"
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "colors": [
+        {
+         "name": "グリーン",
+         "id": "10033",
+         "hex": "3b7d22"
+        }
+       ],
+       "tag": "FAMILY_PRICE",
+       "tagText": "IKEA Family価格",
+       "quickFacts": [],
+       "features": [],
+       "availability": [],
+       "ratingValue": 3.8,
+       "ratingCount": 73,
+       "itemNo": "19471463",
+       "itemType": "SPR",
+       "salesPrice": {
+        "currencyCode": "JPY",
+        "numeral": 61990.0,
+        "current": {
+         "prefix": "¥",
+         "wholeNumber": "61,990",
+         "separator": "",
+         "decimals": "",
+         "suffix": "",
+         "isRegularCurrency": false,
+         "style": "SUPER"
+        },
+        "previous": {
+         "prefix": "¥",
+         "wholeNumber": "66,990",
+         "separator": "",
+         "decimals": "",
+         "suffix": "",
+         "isRegularCurrency": false,
+         "style": "SUPER"
+        },
+        "isBreathTaking": false,
+        "discount": "",
+        "discountAmount": {
+         "prefix": "¥",
+         "wholeNumber": "5,000",
+         "separator": "",
+         "decimals": "",
+         "suffix": "",
+         "isRegularCurrency": false,
+         "style": "SUPER"
+        },
+        "discountPercentage": 7.0,
+        "prevPriceLabel": "通常価格",
+        "validFrom": "2026-11-01",
+        "validTo": "2026-12-30",
+        "availabilityDisclaimer": "特別価格期間 2026/11/01～2026/12/30。在庫切れの場合はご了承ください",
+        "tag": "FAMILY_PRICE",
+        "tagText": "IKEA Family価格",
+        "priceText": "価格",
+        "tags": [
+         "FAMILY_PRICE"
+        ],
+        "tagWithText": {
+         "tag": "FAMILY_PRICE",
+         "text": "IKEA Family価格"
+        }
+       },
+       "contextualImageUrl": "https://www.ikea.com/jp/ja/images/products/jaettebo-1-5-seat-module-with-storage-samsala-dark-yellow-green__1139837_pe880478_s5.jpg",
+       "contextualImageAlt": "JÄTTEBO イェッテボ 1.5人掛けモジュール 収納付き, サムサーラ ダークイエローグリーン",
+       "mainImageAlt": "JÄTTEBO イェッテボ 1.5人掛けモジュール 収納付き, サムサーラ ダークイエローグリーン",
+       "businessStructure": {
+        "homeFurnishingBusinessName": "Living room seating",
+        "homeFurnishingBusinessNo": "01",
+        "productAreaName": "Sofas",
+        "productAreaNo": "0111",
+        "productRangeAreaName": "Sofas",
+        "productRangeAreaNo": "011"
+       },
+       "categoryPath": [
+        {
+         "name": "ソファ＆パーソナルチェア",
+         "key": "700640"
+        },
+        {
+         "name": "ソファ",
+         "key": "fu003"
+        },
+        {
+         "name": "モジュールソファ・組み合わせソファ",
+         "key": "31786"
+        }
+       ],
+       "validDesignText": "サムサーラ ダークイエローグリーン",
+       "heroBackoffData": {},
+       "optimizelyAttributes": {
+        "PRODUCT_TYPE": "standard"
+       }
+      },
+      "type": "PRODUCT",
+      "label": "商品",
+      "actionTokens": [],
+      "isBreakout": false
+     },
+     {
+      "metadata": "v1;42;PRODUCT;s99635111;products_main;",
+      "product": {
+       "name": "VIMLE ヴィムレ",
+       "typeName": "3人掛けソファ",
+       "itemMeasureReferenceText": "",
+       "mainImageUrl": "https://www.ikea.com/jp/ja/images/products/vimle-3-seat-sofa-johanneshov-brown-beige__1544734_pe1019277_s5.jpg",
+       "pipUrl": "https://www.ikea.com/jp/ja/p/vimle-3-seat-sofa-johanneshov-brown-beige-s99635111/",
+       "filterClass": "sofas",
+       "id": "s99635111",
+       "itemNoGlobal": "19631433",
+       "onlineSellable": true,
+       "lastChance": false,
+       "gprDescription": {
+        "numberOfVariants": 7,
+        "variants": [
+         {
+          "id": "s39399032",
+          "pipUrl": "https://www.ikea.com/jp/ja/p/vimle-3-seat-sofa-gunnared-beige-s39399032/",
+          "imageUrl": "https://www.ikea.com/jp/ja/images/products/vimle-3-seat-sofa-gunnared-beige__1576859_pe1032778_s5.jpg",
+          "imageAlt": "VIMLE ヴィムレ 3人掛けソファ, グンナレド ベージュ",
+          "availability": [],
+          "ratingValue": 3.9,
+          "ratingCount": 197,
+          "name": "VIMLE ヴィムレ",
+          "typeName": "3人掛けソファ",
+          "itemMeasureReferenceText": "",
+          "mainImageUrl": "https://www.ikea.com/jp/ja/images/products/vimle-3-seat-sofa-gunnared-beige__1576859_pe1032778_s5.jpg",
+          "mainImageAlt": "VIMLE ヴィムレ 3人掛けソファ, グンナレド ベージュ",
+          "itemNoGlobal": "19399033",
+          "onlineSellable": true,
+          "lastChance": false,
+          "itemNo": "39399032",
+          "itemType": "SPR",
+          "optimizelyAttributes": {
+           "PRODUCT_TYPE": "standard"
+          },
+          "validDesignText": "グンナレド ベージュ"
+         },
+         {
+          "id": "s99399029",
+          "pipUrl": "https://www.ikea.com/jp/ja/p/vimle-3-seat-sofa-gunnared-medium-grey-s99399029/",
+          "imageUrl": "https://www.ikea.com/jp/ja/images/products/vimle-3-seat-sofa-gunnared-medium-grey__1576934_pe1032831_s5.jpg",
+          "imageAlt": "VIMLE ヴィムレ 3人掛けソファ, グンナレド ミディアムグレー",
+          "availability": [],
+          "ratingValue": 3.9,
+          "ratingCount": 197,
+          "name": "VIMLE ヴィムレ",
+          "typeName": "3人掛けソファ",
+          "itemMeasureReferenceText": "",
+          "mainImageUrl": "https://www.ikea.com/jp/ja/images/products/vimle-3-seat-sofa-gunnared-medium-grey__1576934_pe1032831_s5.jpg",
+          "mainImageAlt": "VIMLE ヴィムレ 3人掛けソファ, グンナレド ミディアムグレー",
+          "itemNoGlobal": "79399030",
+          "onlineSellable": true,
+          "lastChance": false,
+          "itemNo": "99399029",
+          "itemType": "SPR",
+          "optimizelyAttributes": {
+           "PRODUCT_TYPE": "standard"
+          },
+          "validDesignText": "グンナレド ミディアムグレー"
+         }
+        ],
+        "variations": [
+         {
+          "id": "cover",
+          "name": "カバー",
+          "count": 8,
+          "values": [
+           {
+            "name": "クネーベック グレーグリーン",
+            "products": [
+             "69635117"
+            ]
+           },
+           {
+            "name": "クネーベック ライトベージュ",
+            "products": [
+             "39635114"
+            ]
+           },
+           {
+            "name": "グンナレド ベージュ",
+            "products": [
+             "39399032"
+            ]
+           },
+           {
+            "name": "グンナレド ミディアムグレー",
+            "products": [
+             "99399029"
+            ]
+           },
+           {
+            "name": "ケーリンゲ ダークブルー",
+            "products": [
+             "29635124"
+            ]
+           },
+           {
+            "name": "ハーラルプ グレー",
+            "products": [
+             "49399041"
+            ]
+           },
+           {
+            "name": "モッスヘード グレーグリーン",
+            "products": [
+             "49635137"
+            ]
+           },
+           {
+            "name": "ヨハネスホブ ブラウンベージュ",
+            "products": [
+             "99635111"
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "colors": [
+        {
+         "name": "ベージュ",
+         "id": "10003",
+         "hex": "f4f3d7"
+        }
+       ],
+       "tag": "NEW_PRODUCT",
+       "tagText": "New",
+       "quickFacts": [
+        {
+         "type": "FIRMNESS",
+         "id": "47482",
+         "name": "よりやわらかめ",
+         "typeName": "硬さ"
+        }
+       ],
+       "features": [],
+       "availability": [],
+       "ratingValue": 3.9,
+       "ratingCount": 197,
+       "itemNo": "99635111",
+       "itemType": "SPR",
+       "salesPrice": {
+        "currencyCode": "JPY",
+        "numeral": 100990.0,
+        "current": {
+         "prefix": "¥",
+         "wholeNumber": "100,990",
+         "separator": "",
+         "decimals": "",
+         "suffix": "",
+         "isRegularCurrency": false,
+         "style": "SUPER"
+        },
+        "isBreathTaking": false,
+        "discount": "",
+        "tag": "NEW_PRODUCT",
+        "tagText": "New",
+        "priceText": "価格",
+        "tags": [
+         "NEW_PRODUCT"
+        ],
+        "tagWithText": {
+         "tag": "NEW_PRODUCT",
+         "text": "New"
+        }
+       },
+       "contextualImageUrl": "https://www.ikea.com/jp/ja/images/products/vimle-3-seat-sofa-johanneshov-brown-beige__1546869_pe1020220_s5.jpg",
+       "contextualImageAlt": "VIMLE ヴィムレ 3人掛けソファ, ヨハネスホブ ブラウンベージュ",
+       "mainImageAlt": "VIMLE ヴィムレ 3人掛けソファ, ヨハネスホブ ブラウンベージュ",
+       "businessStructure": {
+        "homeFurnishingBusinessName": "Living room seating",
+        "homeFurnishingBusinessNo": "01",
+        "productAreaName": "Sofas",
+        "productAreaNo": "0111",
+        "productRangeAreaName": "Sofas",
+        "productRangeAreaNo": "011"
+       },
+       "categoryPath": [
+        {
+         "name": "ソファ＆パーソナルチェア",
+         "key": "700640"
+        },
+        {
+         "name": "ソファ",
+         "key": "fu003"
+        },
+        {
+         "name": "3人掛けソファ",
+         "key": "10670"
+        }
+       ],
+       "validDesignText": "ヨハネスホブ ブラウンベージュ",
+       "heroBackoffData": {},
+       "optimizelyAttributes": {
+        "PRODUCT_TYPE": "standard"
+       }
+      },
+      "type": "PRODUCT",
+      "label": "商品",
+      "actionTokens": [],
+      "isBreakout": false
+     }
+    ],
+    "start": 0,
+    "end": 6,
+    "max": 282
+   }
+  }
+ }
+}

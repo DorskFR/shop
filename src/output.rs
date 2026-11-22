@@ -1,6 +1,6 @@
 use anstream::println;
 use anstyle::{AnsiColor, Style};
-use shop::{amazon, rakuten};
+use shop::{amazon, product, rakuten};
 
 const PRICE: Style = Style::new()
     .bold()
@@ -217,6 +217,86 @@ pub fn rakuten_item(it: &rakuten::Item) {
     }
     if let Some(c) = &it.caption {
         println!("\n{c}");
+    }
+}
+
+pub fn products(res: &product::SearchPage) {
+    if let Some(total) = res.total {
+        println!(
+            "{}",
+            paint(DIM, &format!("{total} results, page {}", res.page))
+        );
+    }
+    for (i, p) in res.items.iter().enumerate() {
+        let mut head = format!("{:>2}. {}", i + 1, price(p.price));
+        if p.rating.is_some() || p.rating_count.is_some() {
+            head.push_str(&format!("  {}", stars(p.rating, p.rating_count)));
+        }
+        if let Some(lp) = p.list_price.filter(|lp| Some(*lp) != p.price) {
+            head.push_str(&format!("  {}", paint(LIST_PRICE, &yen(lp))));
+        }
+        if p.in_stock == Some(false) {
+            head.push_str(&format!("  {}", paint(WARN, "[out of stock]")));
+        }
+        for b in &p.badges {
+            head.push_str(&format!("  {}", paint(BADGE, &format!("[{b}]"))));
+        }
+        println!("{head}");
+        let name = match p.brand.as_ref().filter(|b| !p.name.starts_with(b.as_str())) {
+            Some(b) => format!("{} {}", paint(DIM, b), paint(TITLE, &p.name)),
+            None => paint(TITLE, &p.name),
+        };
+        println!("    {name}");
+        println!("    {}", paint(DIM, &p.url));
+    }
+}
+
+pub fn product(p: &product::Product) {
+    println!("{}", paint(TITLE, &p.name));
+    println!("{}", paint(DIM, &p.url));
+    println!("{}{}", label("id"), p.id);
+    if let Some(v) = &p.brand {
+        println!("{}{v}", label("brand"));
+    }
+    println!("{}{}", label("price"), price(p.price));
+    if let Some(lp) = p.list_price.filter(|lp| Some(*lp) != p.price) {
+        println!("{}{}", label("list price"), paint(LIST_PRICE, &yen(lp)));
+    }
+    if p.rating.is_some() || p.rating_count.is_some() {
+        println!("{}{}", label("rating"), stars(p.rating, p.rating_count));
+    }
+    if let Some(s) = p.in_stock {
+        let v = if s {
+            "yes".to_string()
+        } else {
+            paint(WARN, "no")
+        };
+        println!("{}{v}", label("in stock"));
+    }
+    if !p.badges.is_empty() {
+        println!("{}{}", label("badges"), paint(BADGE, &p.badges.join(", ")));
+    }
+    if !p.categories.is_empty() {
+        println!("{}{}", label("category"), p.categories.join(" › "));
+    }
+    if !p.variants.is_empty() {
+        println!("{}{}", label("variants"), p.variants.join(", "));
+    }
+    if !p.details.is_empty() {
+        println!("\n{}", paint(TITLE, "details"));
+        for (k, v) in &p.details {
+            println!("  {}: {v}", paint(DIM, k));
+        }
+    }
+    if let Some(d) = &p.description {
+        println!("\n{d}");
+    }
+}
+
+fn price(p: Option<u64>) -> String {
+    match p {
+        Some(p) => paint(PRICE, &yen(p)),
+        None => paint(DIM, "no price"),
     }
 }
 

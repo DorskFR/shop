@@ -7,7 +7,9 @@ use serde::Serialize;
 use shop::{
     amazon::{self, Market},
     fetch::{FetchError, Fetcher},
-    rakuten,
+    iherb, ikea, nitori,
+    product::{self, Connector},
+    rakuten, uniqlo,
 };
 
 mod output;
@@ -16,7 +18,7 @@ mod update;
 #[derive(Parser)]
 #[command(
     version,
-    about = "Searches Japanese shops with pure HTTP calls. Connectors: amazon (amazon.co.jp), rakuten (Rakuten Ichiba)"
+    about = "Searches Japanese shops with pure HTTP calls. Connectors: amazon, rakuten, iherb, ikea, nitori, uniqlo"
 )]
 struct Cli {
     #[arg(long, global = true, help = "Print JSON instead of text")]
@@ -42,6 +44,26 @@ enum Store {
     Rakuten {
         #[command(subcommand)]
         cmd: RakutenCmd,
+    },
+    #[command(about = "iHerb Japan (jp.iherb.com)")]
+    Iherb {
+        #[command(subcommand)]
+        cmd: ShopCmd,
+    },
+    #[command(about = "IKEA Japan (ikea.com/jp)")]
+    Ikea {
+        #[command(subcommand)]
+        cmd: ShopCmd,
+    },
+    #[command(about = "Nitori (nitori-net.jp)")]
+    Nitori {
+        #[command(subcommand)]
+        cmd: ShopCmd,
+    },
+    #[command(about = "Uniqlo Japan (uniqlo.com/jp)")]
+    Uniqlo {
+        #[command(subcommand)]
+        cmd: ShopCmd,
     },
     #[command(
         about = "Print a shell completion script",
@@ -106,6 +128,25 @@ enum RakutenCmd {
     },
     #[command(about = "Look up one item by item code (shop:itemid)")]
     Item { item_code: String },
+}
+
+#[derive(Subcommand)]
+enum ShopCmd {
+    #[command(about = "Search products")]
+    Search {
+        query: Vec<String>,
+        #[arg(long, default_value_t = 1)]
+        page: u32,
+        #[arg(long, short = 'n', help = "Show at most N results")]
+        limit: Option<u32>,
+        #[arg(long, value_enum, default_value = "relevance")]
+        sort: product::Sort,
+    },
+    #[command(about = "Product details")]
+    Item {
+        #[arg(help = "Product id or URL")]
+        id: String,
+    },
 }
 
 fn main() -> ExitCode {
@@ -177,6 +218,10 @@ fn run(cli: Cli) -> Result<()> {
                 }
             }
         }
+        Store::Iherb { cmd } => run_shop(&iherb::Iherb, cmd, json, cli.verbose),
+        Store::Ikea { cmd } => run_shop(&ikea::Ikea, cmd, json, cli.verbose),
+        Store::Nitori { cmd } => run_shop(&nitori::Nitori, cmd, json, cli.verbose),
+        Store::Uniqlo { cmd } => run_shop(&uniqlo::Uniqlo, cmd, json, cli.verbose),
         Store::Rakuten { cmd } => {
             let fetcher = Fetcher::new(cli.verbose);
             let creds = rakuten_credentials()?;
@@ -219,6 +264,35 @@ fn run(cli: Cli) -> Result<()> {
                     emit(json, &item, || output::rakuten_item(&item))
                 }
             }
+        }
+    }
+}
+
+fn run_shop(shop: &dyn Connector, cmd: ShopCmd, json: bool, verbose: bool) -> Result<()> {
+    let fetcher = Fetcher::new(verbose);
+    match cmd {
+        ShopCmd::Search {
+            query,
+            page,
+            limit,
+            sort,
+        } => {
+            let text = join_query(&query)?;
+            let q = product::Query {
+                text: &text,
+                page,
+                limit,
+                sort,
+            };
+            let mut res = shop.search(&fetcher, &q)?;
+            if let Some(n) = limit {
+                res.items.truncate(n as usize);
+            }
+            emit(json, &res, || output::products(&res))
+        }
+        ShopCmd::Item { id } => {
+            let p = shop.item(&fetcher, &id)?;
+            emit(json, &p, || output::product(&p))
         }
     }
 }

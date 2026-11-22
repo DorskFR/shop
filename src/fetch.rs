@@ -15,16 +15,18 @@ pub enum FetchError {
 impl std::fmt::Display for FetchError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            FetchError::Blocked(why) => write!(f, "blocked by Amazon: {why}"),
-            FetchError::NotFound(url) => write!(
-                f,
-                "page not found: {url} (Amazon also serves this page to clients it distrusts)"
-            ),
+            FetchError::Blocked(why) => write!(f, "blocked by {why}"),
+            FetchError::NotFound(what) => write!(f, "not found: {what}"),
         }
     }
 }
 
 impl std::error::Error for FetchError {}
+
+pub struct Response {
+    pub status: u16,
+    pub body: String,
+}
 
 pub struct Fetcher {
     pub verbose: bool,
@@ -68,15 +70,42 @@ impl Fetcher {
         if self.verbose {
             eprintln!("shop: HTTP {status}, {} bytes", body.len());
         }
+        let not_found = || {
+            FetchError::NotFound(format!(
+                "{url} (Amazon also serves this page to clients it distrusts)"
+            ))
+        };
         if status == 404 {
-            return Err(FetchError::NotFound(url.to_string()).into());
+            return Err(not_found().into());
         }
         match classify(&body) {
             PageKind::Ok if status < 400 => Ok(body),
-            PageKind::Ok => Err(FetchError::Blocked(format!("HTTP {status}")).into()),
-            PageKind::Blocked(why) => Err(FetchError::Blocked(why.to_string()).into()),
-            PageKind::NotFound => Err(FetchError::NotFound(url.to_string()).into()),
+            PageKind::Ok => Err(FetchError::Blocked(format!("Amazon: HTTP {status}")).into()),
+            PageKind::Blocked(why) => Err(FetchError::Blocked(format!("Amazon: {why}")).into()),
+            PageKind::NotFound => Err(not_found().into()),
         }
+    }
+
+    pub fn get(&self, url: &str, headers: &[(&str, &str)]) -> Result<Response> {
+        if self.verbose {
+            eprintln!("shop: GET {url}");
+        }
+        let mut req = self.agent.get(url).header("User-Agent", USER_AGENT);
+        for (k, v) in headers {
+            req = req.header(*k, *v);
+        }
+        let mut resp = req.call().with_context(|| format!("GET {url}"))?;
+        let status = resp.status().as_u16();
+        let body = resp
+            .body_mut()
+            .with_config()
+            .limit(32 * 1024 * 1024)
+            .read_to_string()
+            .with_context(|| format!("reading {url}"))?;
+        if self.verbose {
+            eprintln!("shop: HTTP {status}, {} bytes", body.len());
+        }
+        Ok(Response { status, body })
     }
 
     pub fn json(&self, url: &str, headers: &[(&str, String)]) -> Result<(u16, String)> {

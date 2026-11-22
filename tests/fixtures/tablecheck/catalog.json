@@ -1,0 +1,281 @@
+{
+ "locales": [
+  "en",
+  "ja",
+  "ko",
+  "zh-CN",
+  "zh-TW"
+ ],
+ "facets": {
+  "cuisine": {
+   "label": {
+    "en": "Cuisine",
+    "ja": "料理ジャンル",
+    "ko": "요리 장르",
+    "zh-CN": "菜系",
+    "zh-TW": "菜系"
+   },
+   "combine": "or",
+   "count_profile": "venue-facet-cuisine",
+   "needs_date": false
+  }
+ },
+ "values": {
+  "cuisine": {
+   "buffet": {
+    "label": {
+     "en": "Buffet",
+     "ja": "ビュッフェ",
+     "ko": "뷔페",
+     "zh-CN": "自助餐",
+     "zh-TW": "自助餐"
+    },
+    "parent": null,
+    "reading": "びゅっふぇ"
+   },
+   "japanese": {
+    "label": {
+     "en": "Japanese",
+     "ja": "和食",
+     "ko": "일본 요리",
+     "zh-CN": "日本料理",
+     "zh-TW": "日式料理"
+    },
+    "parent": null,
+    "reading": "わしょく",
+    "aliases": [
+     "日本料理"
+    ]
+   },
+   "kaiseki": {
+    "label": {
+     "en": "Kaiseki",
+     "ja": "懐石・会席料理",
+     "ko": "가이세키",
+     "zh-CN": "怀石料理",
+     "zh-TW": "懷石料理"
+    },
+    "parent": "japanese",
+    "reading": "かいせきかいせきりょうり",
+    "aliases": [
+     "懐石",
+     "会席",
+     "会席料理"
+    ]
+   },
+   "seafood": {
+    "label": {
+     "en": "Seafood",
+     "ja": "シーフード・魚介料理",
+     "ko": "해산물",
+     "zh-CN": "海鲜，鱼贝",
+     "zh-TW": "海鮮，魚貝"
+    },
+    "parent": null,
+    "reading": "しーふーどぎょかいりょうり",
+    "aliases": [
+     "魚介料理",
+     "魚介"
+    ]
+   },
+   "sushi": {
+    "label": {
+     "en": "Sushi",
+     "ja": "鮨",
+     "ko": "스시",
+     "zh-CN": "寿司",
+     "zh-TW": "壽司"
+    },
+    "parent": "japanese",
+    "reading": "すし",
+    "aliases": [
+     "寿司",
+     "鮨",
+     "鮓"
+    ]
+   },
+   "tempura": {
+    "label": {
+     "en": "Tempura",
+     "ja": "天ぷら",
+     "ko": "덴푸라(튀김)",
+     "zh-CN": "天妇罗",
+     "zh-TW": "天婦羅"
+    },
+    "parent": "japanese",
+    "reading": "てんぷら",
+    "aliases": [
+     "天麩羅"
+    ]
+   },
+   "yakiniku": {
+    "label": {
+     "en": "Yakiniku & Korean BBQ",
+     "ja": "焼肉",
+     "ko": "숯불구이・야키니쿠",
+     "zh-CN": "日式烧烤",
+     "zh-TW": "烤肉・韓國燒烤"
+    },
+    "parent": "meat",
+    "reading": "やきにく",
+    "aliases": [
+     "焼き肉"
+    ]
+   }
+  },
+  "feature": {
+   "business": {
+    "label": {
+     "en": "Business Meetings",
+     "ja": "接待・ビジネス",
+     "ko": "접대·비즈니스",
+     "zh-CN": "商务会议",
+     "zh-TW": "商務會議"
+    }
+   },
+   "events": {
+    "label": {
+     "en": "Private & Corporate Events",
+     "ja": "貸切・プライベート",
+     "ko": "대절·프라이빗 이벤트",
+     "zh-CN": "包场",
+     "zh-TW": "包場"
+    }
+   },
+   "groups": {
+    "label": {
+     "en": "Friends & Groups",
+     "ja": "友達・グループ・女子会",
+     "ko": "친구·그룹",
+     "zh-CN": "好友，集体活动",
+     "zh-TW": "好友，集體活動"
+    }
+   },
+   "quiet": {
+    "label": {
+     "en": "Quiet",
+     "ja": "落ち着いた",
+     "ko": "조용한",
+     "zh-CN": "安静",
+     "zh-TW": "安靜"
+    }
+   }
+  }
+ },
+ "kinds": {
+  "country": {
+   "en": "Country",
+   "ja": "国",
+   "ko": "국가",
+   "zh-CN": "国家",
+   "zh-TW": "國家"
+  },
+  "region": {
+   "en": "Region",
+   "ja": "都道府県",
+   "ko": "도도부현",
+   "zh-CN": "都道府县",
+   "zh-TW": "都道府縣"
+  },
+  "city": {
+   "en": "City",
+   "ja": "市区町村",
+   "ko": "시구정촌",
+   "zh-CN": "市区町村",
+   "zh-TW": "市區町村"
+  },
+  "ward": {
+   "en": "Ward",
+   "ja": "区",
+   "ko": "구",
+   "zh-CN": "区",
+   "zh-TW": "區"
+  },
+  "area": {
+   "en": "Area",
+   "ja": "エリア",
+   "ko": "지역",
+   "zh-CN": "区域",
+   "zh-TW": "區域"
+  },
+  "station": {
+   "en": "Station",
+   "ja": "駅",
+   "ko": "역",
+   "zh-CN": "车站",
+   "zh-TW": "車站"
+  },
+  "line": {
+   "en": "Train line",
+   "ja": "路線",
+   "ko": "노선",
+   "zh-CN": "线路",
+   "zh-TW": "路線"
+  }
+ },
+ "subkinds": {
+  "prefecture": {
+   "en": "Prefecture",
+   "ja": "都道府県",
+   "ko": "도도부현",
+   "zh-CN": "都道府县",
+   "zh-TW": "都道府縣"
+  },
+  "designated_city": {
+   "en": "Designated city",
+   "ja": "政令指定都市",
+   "ko": "정령지정도시",
+   "zh-CN": "政令指定都市",
+   "zh-TW": "政令指定都市"
+  },
+  "special_ward": {
+   "en": "Special ward",
+   "ja": "特別区",
+   "ko": "특별구",
+   "zh-CN": "特别区",
+   "zh-TW": "特別區"
+  },
+  "city": {
+   "en": "City",
+   "ja": "市",
+   "ko": "시",
+   "zh-CN": "市",
+   "zh-TW": "市"
+  },
+  "town": {
+   "en": "Town",
+   "ja": "町",
+   "ko": "정",
+   "zh-CN": "町",
+   "zh-TW": "町"
+  },
+  "village": {
+   "en": "Village",
+   "ja": "村",
+   "ko": "촌",
+   "zh-CN": "村",
+   "zh-TW": "村"
+  },
+  "planning_area": {
+   "en": "Planning area",
+   "ja": "計画区域",
+   "ko": "계획 구역",
+   "zh-CN": "规划区",
+   "zh-TW": "規劃區"
+  },
+  "landmark": {
+   "en": "Landmark",
+   "ja": "ランドマーク",
+   "ko": "랜드마크",
+   "zh-CN": "地标",
+   "zh-TW": "地標"
+  },
+  "group": {
+   "en": "All stations",
+   "ja": "全駅",
+   "ko": "전체 역",
+   "zh-CN": "所有车站",
+   "zh-TW": "所有車站"
+  }
+ }
+}

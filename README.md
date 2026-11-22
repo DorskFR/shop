@@ -18,6 +18,9 @@ Results come back as text or JSON: prices, ratings, specs and top reviews. No br
 | `ikea` | IKEA Japan search service, product pages and stock API |
 | `nitori` | nitori-net.jp storefront API |
 | `uniqlo` | uniqlo.com/jp commerce API |
+| `hotpepper` | HotPepper Beauty salon pages (hair salons, barbers) |
+| `tabelog` | Tabelog restaurant pages |
+| `tablecheck` | TableCheck restaurant booking pages |
 
 ```sh
 shop amazon search 電気ケトル --no-ads     # results with price, list price, rating, badges
@@ -27,6 +30,8 @@ shop rakuten search 電気ケトル --sort reviews --max-price 5000
 shop --json amazon search 電気ケトル       # same data as JSON
 shop ikea search ソファ --sort price-asc   # iherb, ikea, nitori, uniqlo share search and item
 shop uniqlo item E465185-000              # price, rating, stock, colors and sizes, specs
+shop tabelog search ラーメン -a 渋谷 --sort rating   # hotpepper, tabelog, tablecheck: places
+shop hotpepper item H000419288            # rating, access, hours, coupons and menus
 ```
 
 ## Install

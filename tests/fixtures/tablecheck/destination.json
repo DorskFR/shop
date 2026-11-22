@@ -1,0 +1,207 @@
+{
+ "root": {
+  "id": "toplevel",
+  "relevance": 1.0,
+  "fields": {
+   "totalCount": 7,
+   "searchGroup": 2
+  },
+  "coverage": {
+   "coverage": 100,
+   "documents": 10465,
+   "full": true,
+   "nodes": 1,
+   "results": 1,
+   "resultsFull": 1
+  },
+  "children": [
+   {
+    "id": "id:tablecheck:destination::area:4859036",
+    "relevance": 62.76123986950461,
+    "source": "search",
+    "fields": {
+     "sddocname": "destination",
+     "documentid": "id:tablecheck:destination::area:4859036",
+     "id": "area:4859036",
+     "kind": "area",
+     "names": {
+      "en": "Ginza",
+      "ko": "긴자",
+      "zh-TW": "Ginza",
+      "zh-CN": "Ginza",
+      "ja": "銀座"
+     },
+     "reading": "ぎんざ",
+     "subkind": "area",
+     "context": {
+      "en": "Chuo, Tokyo, Japan",
+      "ko": "주오구, 도쿄도, 일본",
+      "zh-TW": "中央區, 東京都, 日本",
+      "zh-CN": "中央区, 东京都, 日本",
+      "ja": "中央区, 東京都, 日本"
+     },
+     "parent_ids": [
+      "city:1758897",
+      "region:1543125",
+      "country:jp"
+     ],
+     "parents": [
+      {
+       "id": "country:jp",
+       "kind": "country",
+       "names": {
+        "en": "Japan",
+        "ko": "일본",
+        "zh-TW": "日本",
+        "zh-CN": "日本",
+        "ja": "日本"
+       }
+      },
+      {
+       "id": "region:1543125",
+       "kind": "region",
+       "names": {
+        "en": "Tokyo",
+        "ko": "도쿄도",
+        "zh-TW": "東京都",
+        "zh-CN": "东京都",
+        "ja": "東京都"
+       }
+      },
+      {
+       "id": "city:1758897",
+       "kind": "city",
+       "names": {
+        "en": "Chuo",
+        "ko": "주오구",
+        "zh-TW": "中央區",
+        "zh-CN": "中央区",
+        "ja": "中央区"
+       }
+      }
+     ],
+     "country": "JP",
+     "currency": "JPY",
+     "location": {
+      "lat": 35.671311,
+      "lng": 139.763673
+     },
+     "venue_count": 575
+    }
+   },
+   {
+    "id": "id:tablecheck:destination::station:n6271990033",
+    "relevance": 62.62405494486216,
+    "source": "search",
+    "fields": {
+     "sddocname": "destination",
+     "documentid": "id:tablecheck:destination::station:n6271990033",
+     "id": "station:n6271990033",
+     "kind": "station",
+     "names": {
+      "en": "Ginza",
+      "ko": "긴자",
+      "zh-TW": "銀座",
+      "zh-CN": "银座",
+      "ja": "銀座"
+     },
+     "reading": "ぎんざ",
+     "subkind": "station",
+     "context": {
+      "en": "Chuo, Tokyo, Japan",
+      "ko": "주오구, 도쿄도, 일본",
+      "zh-TW": "中央區, 東京都, 日本",
+      "zh-CN": "中央区, 东京都, 日本",
+      "ja": "中央区, 東京都, 日本"
+     },
+     "parent_ids": [
+      "city:1758897",
+      "region:1543125",
+      "country:jp"
+     ],
+     "parents": [
+      {
+       "id": "country:jp",
+       "kind": "country",
+       "names": {
+        "en": "Japan",
+        "ko": "일본",
+        "zh-TW": "日本",
+        "zh-CN": "日本",
+        "ja": "日本"
+       }
+      },
+      {
+       "id": "region:1543125",
+       "kind": "region",
+       "names": {
+        "en": "Tokyo",
+        "ko": "도쿄도",
+        "zh-TW": "東京都",
+        "zh-CN": "东京都",
+        "ja": "東京都"
+       }
+      },
+      {
+       "id": "city:1758897",
+       "kind": "city",
+       "names": {
+        "en": "Chuo",
+        "ko": "주오구",
+        "zh-TW": "中央區",
+        "zh-CN": "中央区",
+        "ja": "中央区"
+       }
+      }
+     ],
+     "country": "JP",
+     "currency": "JPY",
+     "location": {
+      "lat": 35.672125,
+      "lng": 139.764099
+     },
+     "venue_count": 574,
+     "lines": [
+      {
+       "id": "line:r8015940",
+       "names": {
+        "en": "Tokyo Metro Marunouchi Line",
+        "ko": "도쿄메트로 마루노우치선",
+        "zh-TW": "丸之內線",
+        "zh-CN": "丸之內線",
+        "ja": "東京メトロ丸ノ内線"
+       },
+       "colour": "#F62E36",
+       "code": "M"
+      },
+      {
+       "id": "line:r8026077",
+       "names": {
+        "en": "Tokyo Metro Ginza Line",
+        "ko": "도쿄메트로 긴자선",
+        "zh-TW": "Tokyo Metro Ginza Line",
+        "zh-CN": "Tokyo Metro Ginza Line",
+        "ja": "東京メトロ銀座線"
+       },
+       "colour": "#FF9500",
+       "code": "G"
+      },
+      {
+       "id": "line:r8026149",
+       "names": {
+        "en": "Tokyo Metro Hibiya Line",
+        "ko": "도쿄메트로 히비야선",
+        "zh-TW": "Tokyo Metro Hibiya Line",
+        "zh-CN": "Tokyo Metro Hibiya Line",
+        "ja": "東京メトロ日比谷線"
+       },
+       "colour": "#B5B5AC",
+       "code": "H"
+      }
+     ],
+     "radius_m": 800
+    }
+   }
+  ]
+ }
+}

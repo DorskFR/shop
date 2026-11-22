@@ -7,7 +7,7 @@ use serde::Serialize;
 use shop::{
     amazon::{self, Market},
     fetch::{FetchError, Fetcher},
-    iherb, ikea, muji, nitori,
+    iherb, ikea, nitori,
     product::{self, Connector},
     rakuten, uniqlo,
 };
@@ -18,7 +18,7 @@ mod update;
 #[derive(Parser)]
 #[command(
     version,
-    about = "Searches Japanese shops with pure HTTP calls. Connectors: amazon, rakuten, iherb, ikea, nitori, muji, uniqlo"
+    about = "Searches Japanese shops with pure HTTP calls. Connectors: amazon, rakuten, iherb, ikea, nitori, uniqlo"
 )]
 struct Cli {
     #[arg(long, global = true, help = "Print JSON instead of text")]
@@ -57,11 +57,6 @@ enum Store {
     },
     #[command(about = "Nitori (nitori-net.jp)")]
     Nitori {
-        #[command(subcommand)]
-        cmd: ShopCmd,
-    },
-    #[command(about = "Muji Japan (muji.com/jp)")]
-    Muji {
         #[command(subcommand)]
         cmd: ShopCmd,
     },
@@ -226,7 +221,6 @@ fn run(cli: Cli) -> Result<()> {
         Store::Iherb { cmd } => run_shop(&iherb::Iherb, cmd, json, cli.verbose),
         Store::Ikea { cmd } => run_shop(&ikea::Ikea, cmd, json, cli.verbose),
         Store::Nitori { cmd } => run_shop(&nitori::Nitori, cmd, json, cli.verbose),
-        Store::Muji { cmd } => run_shop(&muji::Muji, cmd, json, cli.verbose),
         Store::Uniqlo { cmd } => run_shop(&uniqlo::Uniqlo, cmd, json, cli.verbose),
         Store::Rakuten { cmd } => {
             let fetcher = Fetcher::new(cli.verbose);

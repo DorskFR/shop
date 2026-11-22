@@ -14,6 +14,10 @@ Results come back as text or JSON: prices, ratings, specs and top reviews. No br
 |---|---|
 | `amazon` | Public amazon.co.jp pages |
 | `rakuten` | Rakuten Ichiba Item Search API |
+| `iherb` | jp.iherb.com search pages and the iHerb catalog API |
+| `ikea` | IKEA Japan search service, product pages and stock API |
+| `nitori` | nitori-net.jp storefront API |
+| `uniqlo` | uniqlo.com/jp commerce API |
 
 ```sh
 shop amazon search 電気ケトル --no-ads     # results with price, list price, rating, badges
@@ -21,6 +25,8 @@ shop amazon item B01BET65BI               # price, seller, stock, rating histogr
 shop amazon reviews B01BET65BI            # top reviews from the product page
 shop rakuten search 電気ケトル --sort reviews --max-price 5000
 shop --json amazon search 電気ケトル       # same data as JSON
+shop ikea search ソファ --sort price-asc   # iherb, ikea, nitori, uniqlo share search and item
+shop uniqlo item E465185-000              # price, rating, stock, colors and sizes, specs
 ```
 
 ## Install
@@ -98,6 +104,10 @@ Rakuten needs a free app from [Rakuten Web Service](https://webservice.rakuten.c
 
 - Amazon shows full review lists only to signed-in users, so `reviews` returns the 5 to 13 top reviews from the product page.
 - amazon.com refuses plain HTTP from Japanese IPs. `-m com` exits with code 3 there.
+- iHerb search sometimes gets a Cloudflare challenge; `shop` retries, then exits with code 3. iHerb items have no variants.
+- Nitori answers in 8 to 10 seconds per request and reports no list price or item stock.
+- IKEA search has no offset, so page N fetches N pages of results. Stock is country-wide, not per store.
+- Muji is not supported: muji.com does not answer plain HTTP clients.
 - Scraping is against Amazon's conditions of use. Heavy use gets the IP challenged (exit code 3).
 - Rakuten returns review averages and counts, not review text.
 

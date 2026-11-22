@@ -94,6 +94,34 @@ impl Fetcher {
         for (k, v) in headers {
             req = req.header(*k, *v);
         }
+        self.send(url, req)
+    }
+
+    /// Keeps header-name casing: Cloudflare rejects the lowercase names ureq sends by default.
+    pub fn get_raw(&self, url: &str, headers: &[(&str, &str)]) -> Result<Response> {
+        if self.verbose {
+            eprintln!("shop: GET {url}");
+        }
+        let host = url::Url::parse(url)?
+            .host_str()
+            .unwrap_or_default()
+            .to_string();
+        let mut req = self
+            .agent
+            .get(url)
+            .header_raw("Host", host.as_bytes())
+            .header_raw("User-Agent", USER_AGENT.as_bytes());
+        for (k, v) in headers {
+            req = req.header_raw(k, v.as_bytes());
+        }
+        self.send(url, req)
+    }
+
+    fn send(
+        &self,
+        url: &str,
+        req: ureq::RequestBuilder<ureq::typestate::WithoutBody>,
+    ) -> Result<Response> {
         let mut resp = req.call().with_context(|| format!("GET {url}"))?;
         let status = resp.status().as_u16();
         let body = resp

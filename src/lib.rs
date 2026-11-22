@@ -2,7 +2,6 @@ pub mod amazon;
 pub mod fetch;
 pub mod iherb;
 pub mod ikea;
-pub mod muji;
 pub mod nitori;
 pub mod product;
 pub mod rakuten;

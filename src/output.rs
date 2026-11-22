@@ -242,7 +242,7 @@ pub fn products(res: &product::SearchPage) {
             head.push_str(&format!("  {}", paint(BADGE, &format!("[{b}]"))));
         }
         println!("{head}");
-        let name = match &p.brand {
+        let name = match p.brand.as_ref().filter(|b| !p.name.starts_with(b.as_str())) {
             Some(b) => format!("{} {}", paint(DIM, b), paint(TITLE, &p.name)),
             None => paint(TITLE, &p.name),
         };

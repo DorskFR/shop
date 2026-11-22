@@ -6,7 +6,7 @@
 cargo test
 ```
 
-`tests/fixtures/` holds amazon.co.jp and amazon.com pages saved with `<script>` and `<style>` removed, plus the captcha, 503 and not-found pages Amazon serves to clients it refuses. `tests/fixtures.rs` runs the parsers against them.
+`tests/fixtures/<shop>/` holds trimmed iHerb, IKEA, Nitori and Uniqlo responses tested by `tests/<shop>.rs`. `tests/fixtures/` holds amazon.co.jp and amazon.com pages saved with `<script>` and `<style>` removed, plus the captcha, 503 and not-found pages Amazon serves to clients it refuses. `tests/fixtures.rs` runs the parsers against them.
 
 When Amazon changes its layout:
 

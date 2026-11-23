@@ -7,7 +7,7 @@ use serde::Serialize;
 use shop::{
     amazon::{self, Market},
     fetch::{FetchError, Fetcher},
-    hotpepper, iherb, ikea, nitori,
+    hotpepper, iherb, ikea, keepa, nitori,
     product::{self, Connector},
     rakuten, tabelog, tablecheck, uniqlo, venue,
 };
@@ -115,6 +115,23 @@ enum AmazonCmd {
     Reviews {
         #[arg(help = "ASIN or product URL")]
         asin: String,
+    },
+    #[command(about = "Price history chart (PNG) from Keepa, no key needed")]
+    Price {
+        #[arg(help = "ASIN or product URL")]
+        asin: String,
+        #[arg(long, default_value_t = 365, value_parser = clap::value_parser!(u32).range(1..), help = "Days of history")]
+        range: u32,
+        #[arg(long, default_value_t = 1200, value_parser = clap::value_parser!(u32).range(1..))]
+        width: u32,
+        #[arg(long, default_value_t = 350, value_parser = clap::value_parser!(u32).range(1..))]
+        height: u32,
+        #[arg(
+            short,
+            long,
+            help = "Where to write the PNG [default: <asin>-<range>d.png]"
+        )]
+        output: Option<String>,
     },
 }
 
@@ -252,6 +269,32 @@ fn run(cli: Cli) -> Result<()> {
                     let item = fetch_item(&fetcher, market, &asin)?;
                     emit(json, &item.reviews, || output::reviews(&item))
                 }
+                AmazonCmd::Price {
+                    asin,
+                    range,
+                    width,
+                    height,
+                    output,
+                } => {
+                    let (asin, market) = resolve_asin(market, &asin)?;
+                    let opts = keepa::ChartOptions {
+                        range,
+                        width,
+                        height,
+                    };
+                    let png = keepa::fetch_chart(&fetcher, market, &asin, opts)?;
+                    let path = output.unwrap_or_else(|| keepa::default_path(&asin, range));
+                    std::fs::write(&path, &png).with_context(|| format!("writing {path}"))?;
+                    let chart = keepa::PriceChart {
+                        chart_url: keepa::chart_url(market, &asin, opts),
+                        keepa_url: keepa::product_url(market, &asin),
+                        asin,
+                        market,
+                        range,
+                        path,
+                    };
+                    emit(json, &chart, || output::price_chart(&chart))
+                }
             }
         }
         Store::Iherb { cmd } => run_shop(&iherb::Iherb, cmd, json, cli.verbose),
@@ -378,10 +421,14 @@ fn join_query(parts: &[String]) -> Result<String> {
     Ok(q)
 }
 
-fn fetch_item(fetcher: &Fetcher, market: Market, input: &str) -> Result<amazon::Item> {
+fn resolve_asin(market: Market, input: &str) -> Result<(String, Market)> {
     let (asin, url_market) = amazon::parse_asin(input)
         .with_context(|| format!("not an ASIN or Amazon product URL: {input}"))?;
-    let market = url_market.unwrap_or(market);
+    Ok((asin, url_market.unwrap_or(market)))
+}
+
+fn fetch_item(fetcher: &Fetcher, market: Market, input: &str) -> Result<amazon::Item> {
+    let (asin, market) = resolve_asin(market, input)?;
     let html = fetcher.amazon(&market.product_url(&asin), market)?;
     let item = amazon::parse_item(&html, market, &asin);
     if item.title.is_empty() {

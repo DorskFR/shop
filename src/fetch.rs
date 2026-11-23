@@ -28,6 +28,18 @@ pub struct Response {
     pub body: String,
 }
 
+pub struct BinaryResponse {
+    pub status: u16,
+    pub headers: ureq::http::HeaderMap,
+    pub body: Vec<u8>,
+}
+
+impl BinaryResponse {
+    pub fn header(&self, name: &str) -> Option<&str> {
+        self.headers.get(name).and_then(|v| v.to_str().ok())
+    }
+}
+
 pub struct Fetcher {
     pub verbose: bool,
     agent: ureq::Agent,
@@ -115,6 +127,33 @@ impl Fetcher {
             req = req.header_raw(k, v.as_bytes());
         }
         self.send(url, req)
+    }
+
+    pub fn get_bytes(&self, url: &str, headers: &[(&str, &str)]) -> Result<BinaryResponse> {
+        if self.verbose {
+            eprintln!("shop: GET {url}");
+        }
+        let mut req = self.agent.get(url).header("User-Agent", USER_AGENT);
+        for (k, v) in headers {
+            req = req.header(*k, *v);
+        }
+        let mut resp = req.call().with_context(|| format!("GET {url}"))?;
+        let status = resp.status().as_u16();
+        let headers = resp.headers().clone();
+        let body = resp
+            .body_mut()
+            .with_config()
+            .limit(32 * 1024 * 1024)
+            .read_to_vec()
+            .with_context(|| format!("reading {url}"))?;
+        if self.verbose {
+            eprintln!("shop: HTTP {status}, {} bytes", body.len());
+        }
+        Ok(BinaryResponse {
+            status,
+            headers,
+            body,
+        })
     }
 
     fn send(

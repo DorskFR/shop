@@ -12,7 +12,7 @@ Results come back as text or JSON: prices, ratings, specs and top reviews. No br
 
 | Connector | Source |
 |---|---|
-| `amazon` | Public amazon.co.jp pages |
+| `amazon` | Public amazon.co.jp pages, Keepa's public price chart |
 | `rakuten` | Rakuten Ichiba Item Search API |
 | `iherb` | jp.iherb.com search pages and the iHerb catalog API |
 | `ikea` | IKEA Japan search service, product pages and stock API |
@@ -26,6 +26,7 @@ Results come back as text or JSON: prices, ratings, specs and top reviews. No br
 shop amazon search 電気ケトル --no-ads     # results with price, list price, rating, badges
 shop amazon item B01BET65BI               # price, seller, stock, rating histogram, specs
 shop amazon reviews B01BET65BI            # top reviews from the product page
+shop amazon price B01BET65BI --range 90   # Keepa price history chart as a PNG
 shop rakuten search 電気ケトル --sort reviews --max-price 5000
 shop --json amazon search 電気ケトル       # same data as JSON
 shop ikea search ソファ --sort price-asc   # iherb, ikea, nitori, uniqlo share search and item
@@ -113,6 +114,7 @@ Rakuten needs a free app from [Rakuten Web Service](https://webservice.rakuten.c
 - Nitori answers in 8 to 10 seconds per request and reports no list price or item stock.
 - IKEA search has no offset, so page N fetches N pages of results. Stock is country-wide, not per store.
 - Muji is not supported: muji.com does not answer plain HTTP clients.
+- `price` saves Keepa's chart image only. Numeric price history needs a paid Keepa API key.
 - Scraping is against Amazon's conditions of use. Heavy use gets the IP challenged (exit code 3).
 - Rakuten returns review averages and counts, not review text.
 

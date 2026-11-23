@@ -3,6 +3,7 @@ pub mod fetch;
 pub mod hotpepper;
 pub mod iherb;
 pub mod ikea;
+pub mod keepa;
 pub mod nitori;
 pub mod product;
 pub mod rakuten;

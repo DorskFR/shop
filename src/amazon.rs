@@ -3,7 +3,8 @@ use std::sync::LazyLock;
 use scraper::{ElementRef, Html, Selector};
 use serde::Serialize;
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq, clap::ValueEnum)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, clap::ValueEnum, Serialize)]
+#[serde(rename_all = "lowercase")]
 pub enum Market {
     Jp,
     Com,

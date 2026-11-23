@@ -7,6 +7,7 @@
 | `shop amazon search <query>` | ASIN, title, URL, price, list price, rating, rating count, "bought in past month", sponsored flag, badges, delivery, image |
 | `shop amazon item <asin\|url>` | Title, brand, price, list price, availability, seller, rating, rating count, histogram, categories, bullet points, specification rows, image, top reviews |
 | `shop amazon reviews <asin\|url>` | Top reviews: id, author, rating, title, date, verified purchase, variant, helpful votes, body |
+| `shop amazon price <asin\|url>` | Writes Keepa's price history chart (Amazon and new offers) as a PNG; prints the path and the Keepa product page. JSON: asin, market, range, path, chart URL, Keepa URL |
 | `shop rakuten search <query>` | Total count, page, page count, items: code, name, URL, price, shop, rating, rating count, stock, postage included, point rate, catch copy, caption, images |
 | `shop rakuten item <shop:itemid>` | One item, same fields |
 | `shop <iherb\|ikea\|nitori\|uniqlo> search <query>` | Total count, page, items: id, name, URL, brand, price, list price, rating, rating count, stock, badges, variants, image |
@@ -26,6 +27,9 @@
 | `--page N` | search | Result page |
 | `--sort` | amazon search | `relevance`, `price-asc`, `price-desc`, `reviews`, `newest` |
 | `--no-ads` | amazon search | Drop sponsored results |
+| `--range N` | amazon price | Days of history, default 365 |
+| `--width`, `--height` | amazon price | Chart size in pixels, default 1200x350 |
+| `-o`, `--output PATH` | amazon price | PNG path, default `<asin>-<range>d.png` in the current directory |
 | `-n N` | search | Amazon, iHerb, IKEA, Nitori, Uniqlo: keep the first N results. Rakuten: results per page, max 30 |
 | `--sort` | rakuten search | `standard`, `price-asc`, `price-desc`, `reviews`, `rating`, `newest` |
 | `--min-price`, `--max-price` | rakuten search | Price range in yen |
@@ -50,11 +54,15 @@ Text output is colored when stdout is a terminal. `NO_COLOR=1`, a pipe or `--jso
 | 0 | OK |
 | 1 | Error: bad input, API error, page layout not recognised |
 | 3 | Blocked: captcha, 503 or challenge page |
-| 4 | Page not found, or a refusal disguised as one |
+| 4 | Page not found, or a refusal disguised as one (`amazon price`: Keepa has no data for the ASIN) |
 
 ## Rakuten API
 
 Endpoint `https://openapi.rakuten.co.jp/ichibams/api/IchibaItem/Search/20260701`, `formatVersion=2`. Limits: about one request per second per app, 30 items per page, 3,000 results per query.
+
+## Keepa chart
+
+`amazon price` downloads `https://graph.keepa.com/pricehistory.png?asin=<ASIN>&domain=<co.jp|com>&range=<days>&amazon=1&new=1&width=<w>&height=<h>`, which needs no key. A non-200 status or a body that is not a PNG is an error; HTTP 403, 429 and 503 exit with code 3.
 
 ## Shop endpoints
 

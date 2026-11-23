@@ -1,6 +1,6 @@
 use anstream::println;
 use anstyle::{AnsiColor, Style};
-use shop::{amazon, product, rakuten, venue};
+use shop::{amazon, keepa, product, rakuten, venue};
 
 const PRICE: Style = Style::new()
     .bold()
@@ -129,6 +129,11 @@ pub fn item(item: &amazon::Item) {
             )
         );
     }
+}
+
+pub fn price_chart(c: &keepa::PriceChart) {
+    println!("{}", c.path);
+    println!("{}", paint(DIM, &c.keepa_url));
 }
 
 pub fn reviews(item: &amazon::Item) {

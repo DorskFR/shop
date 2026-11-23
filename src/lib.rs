@@ -1,9 +1,12 @@
 pub mod amazon;
+pub mod cainz;
 pub mod fetch;
 pub mod hotpepper;
 pub mod iherb;
 pub mod ikea;
 pub mod keepa;
+pub mod monotaro;
+pub mod next;
 pub mod nitori;
 pub mod product;
 pub mod rakuten;

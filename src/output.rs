@@ -260,6 +260,10 @@ pub fn products(res: &product::SearchPage) {
             None => paint(TITLE, &p.name),
         };
         println!("    {name}");
+        if !p.details.is_empty() {
+            let row: Vec<String> = p.details.iter().map(|(k, v)| format!("{k} {v}")).collect();
+            println!("    {}", paint(DIM, &row.join(" · ")));
+        }
         println!("    {}", paint(DIM, &p.url));
     }
 }

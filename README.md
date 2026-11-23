@@ -18,6 +18,8 @@ Results come back as text or JSON: prices, ratings, specs and top reviews. No br
 | `ikea` | IKEA Japan search service, product pages and stock API |
 | `nitori` | nitori-net.jp storefront API |
 | `uniqlo` | uniqlo.com/jp commerce API |
+| `cainz` | cainz.com search and product pages |
+| `monotaro` | monotaro.com search, product group and item pages |
 | `hotpepper` | HotPepper Beauty salon pages (hair salons, barbers) |
 | `tabelog` | Tabelog restaurant pages |
 | `tablecheck` | TableCheck restaurant booking pages |
@@ -29,7 +31,9 @@ shop amazon reviews B01BET65BI            # top reviews from the product page
 shop amazon price B01BET65BI --range 90   # Keepa price history chart as a PNG
 shop rakuten search 電気ケトル --sort reviews --max-price 5000
 shop --json amazon search 電気ケトル       # same data as JSON
-shop ikea search ソファ --sort price-asc   # iherb, ikea, nitori, uniqlo share search and item
+shop ikea search ソファ --sort price-asc   # iherb, ikea, nitori, uniqlo, cainz, monotaro share search and item
+shop monotaro search 六角レンチ            # tax-included price, part number, ship lead time
+shop cainz item 4549509677048             # specs, delivery and store pickup stock
 shop uniqlo item E465185-000              # price, rating, stock, colors and sizes, specs
 shop tabelog search ラーメン -a 渋谷 --sort rating   # hotpepper, tabelog, tablecheck: places
 shop hotpepper item H000419288            # rating, access, hours, coupons and menus
@@ -113,6 +117,9 @@ Rakuten needs a free app from [Rakuten Web Service](https://webservice.rakuten.c
 - iHerb search sometimes gets a Cloudflare challenge; `shop` retries, then exits with code 3. iHerb items have no variants.
 - Nitori answers in 8 to 10 seconds per request and reports no list price or item stock.
 - IKEA search has no offset, so page N fetches N pages of results. Stock is country-wide, not per store.
+- Cainz store stock is for the default pickup store the site picks; choosing a store needs a login. Cainz has no `reviews` or `newest` sort.
+- Monotaro search lists product groups; `item` on a group shows up to 50 variants with their order codes and part numbers. Monotaro has no `newest` sort.
+- DCM (dcm-ekurashi.com) is not supported: DCM Online is suspended for a security inspection and every page redirects to a maintenance notice.
 - Muji is not supported: muji.com does not answer plain HTTP clients.
 - `price` saves Keepa's chart image only. Numeric price history needs a paid Keepa API key.
 - Scraping is against Amazon's conditions of use. Heavy use gets the IP challenged (exit code 3).

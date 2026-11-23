@@ -6,8 +6,9 @@ use clap_complete::Shell;
 use serde::Serialize;
 use shop::{
     amazon::{self, Market},
+    cainz,
     fetch::{FetchError, Fetcher},
-    hotpepper, iherb, ikea, keepa, nitori,
+    hotpepper, iherb, ikea, keepa, monotaro, nitori,
     product::{self, Connector},
     rakuten, tabelog, tablecheck, uniqlo, venue,
 };
@@ -18,7 +19,7 @@ mod update;
 #[derive(Parser)]
 #[command(
     version,
-    about = "Searches Japanese shops with pure HTTP calls. Connectors: amazon, rakuten, iherb, ikea, nitori, uniqlo, hotpepper, tabelog, tablecheck"
+    about = "Searches Japanese shops with pure HTTP calls. Connectors: amazon, rakuten, iherb, ikea, nitori, uniqlo, cainz, monotaro, hotpepper, tabelog, tablecheck"
 )]
 struct Cli {
     #[arg(long, global = true, help = "Print JSON instead of text")]
@@ -62,6 +63,16 @@ enum Store {
     },
     #[command(about = "Uniqlo Japan (uniqlo.com/jp)")]
     Uniqlo {
+        #[command(subcommand)]
+        cmd: ShopCmd,
+    },
+    #[command(about = "Cainz home center (cainz.com)")]
+    Cainz {
+        #[command(subcommand)]
+        cmd: ShopCmd,
+    },
+    #[command(about = "MonotaRO tools and industrial supplies (monotaro.com)")]
+    Monotaro {
         #[command(subcommand)]
         cmd: ShopCmd,
     },
@@ -301,6 +312,8 @@ fn run(cli: Cli) -> Result<()> {
         Store::Ikea { cmd } => run_shop(&ikea::Ikea, cmd, json, cli.verbose),
         Store::Nitori { cmd } => run_shop(&nitori::Nitori, cmd, json, cli.verbose),
         Store::Uniqlo { cmd } => run_shop(&uniqlo::Uniqlo, cmd, json, cli.verbose),
+        Store::Cainz { cmd } => run_shop(&cainz::Cainz, cmd, json, cli.verbose),
+        Store::Monotaro { cmd } => run_shop(&monotaro::Monotaro, cmd, json, cli.verbose),
         Store::Hotpepper { cmd } => run_venue(&hotpepper::HotPepper, cmd, json, cli.verbose),
         Store::Tabelog { cmd } => run_venue(&tabelog::Tabelog, cmd, json, cli.verbose),
         Store::Tablecheck { cmd } => run_venue(&tablecheck::TableCheck, cmd, json, cli.verbose),

@@ -1,3 +1,5 @@
+<img src="docs/assets/icon.svg" width="64" height="64" alt="">
+
 # shop
 
 Searches Japanese shops with pure HTTP calls, fast and lightweight.

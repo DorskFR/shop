@@ -1,6 +1,6 @@
 use anstream::println;
 use anstyle::{AnsiColor, Style};
-use shop::{amazon, keepa, product, rakuten, venue};
+use shop::{amazon, apple, keepa, product, rakuten, venue};
 
 const PRICE: Style = Style::new()
     .bold()
@@ -400,6 +400,58 @@ pub fn venue(v: &venue::Venue) {
     if let Some(d) = &v.description {
         println!("\n{d}");
     }
+}
+
+pub fn apple_configuration(c: &apple::Configuration) {
+    println!("{}", paint(TITLE, &c.name));
+    println!("{}", paint(DIM, &c.url));
+    println!("{}{}", label("model"), c.model);
+    if let Some(p) = &c.part_number {
+        println!("{}{p}", label("part"));
+    }
+    println!("{}{}", label("price"), paint(PRICE, &yen(c.price)));
+    println!(
+        "{}{} to {} {}",
+        label("range"),
+        yen(c.min_price),
+        yen(c.max_price),
+        paint(DIM, "(this chip)")
+    );
+    for g in c.options.iter().filter(|g| g.choices.len() > 1) {
+        let note = g
+            .note
+            .as_ref()
+            .map(|n| format!("  {}", paint(DIM, n)))
+            .unwrap_or_default();
+        println!("\n{}{note}", paint(TITLE, &g.name));
+        let width = g
+            .choices
+            .iter()
+            .map(|x| x.label.chars().count())
+            .max()
+            .unwrap_or(0);
+        for x in &g.choices {
+            let mark = if x.selected { "*" } else { " " };
+            let pad = " ".repeat(width - x.label.chars().count());
+            let tail = match (x.delta, x.price, &x.note) {
+                (_, _, Some(n)) => paint(WARN, n),
+                (Some(0), _, None) if x.selected => String::new(),
+                (Some(d), Some(p), None) => {
+                    format!("{:>12}  {}", signed_yen(d), paint(PRICE, &yen(p)))
+                }
+                _ => String::new(),
+            };
+            println!(
+                "{}",
+                format!("  {mark} {}{pad}  {tail}", x.label).trim_end()
+            );
+        }
+    }
+}
+
+fn signed_yen(d: i64) -> String {
+    let sign = if d < 0 { "-" } else { "+" };
+    format!("{sign}{}", yen(d.unsigned_abs()))
 }
 
 fn price(p: Option<u64>) -> String {

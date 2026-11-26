@@ -6,7 +6,7 @@
 cargo test
 ```
 
-`tests/fixtures/<shop>/` holds trimmed iHerb, IKEA, Nitori, Uniqlo, Cainz, Monotaro, HotPepper Beauty, Tabelog and TableCheck responses tested by `tests/<shop>.rs`. `tests/fixtures/` holds amazon.co.jp and amazon.com pages saved with `<script>` and `<style>` removed, plus the captcha, 503 and not-found pages Amazon serves to clients it refuses. `tests/fixtures/keepa/chart.png` is a 300x150 Keepa chart for `tests/keepa.rs`. `tests/fixtures.rs` runs the parsers against them.
+`tests/fixtures/<shop>/` holds trimmed iHerb, IKEA, Nitori, Uniqlo, Cainz, Monotaro, Apple, HotPepper Beauty, Tabelog and TableCheck responses tested by `tests/<shop>.rs`. `tests/fixtures/` holds amazon.co.jp and amazon.com pages saved with `<script>` and `<style>` removed, plus the captcha, 503 and not-found pages Amazon serves to clients it refuses. `tests/fixtures/keepa/chart.png` is a 300x150 Keepa chart for `tests/keepa.rs`. `tests/fixtures.rs` runs the parsers against them.
 
 When Amazon changes its layout:
 

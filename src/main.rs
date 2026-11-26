@@ -6,7 +6,7 @@ use clap_complete::Shell;
 use serde::Serialize;
 use shop::{
     amazon::{self, Market},
-    cainz,
+    apple, cainz,
     fetch::{FetchError, Fetcher},
     hotpepper, iherb, ikea, keepa, monotaro, nitori,
     product::{self, Connector},
@@ -19,7 +19,7 @@ mod update;
 #[derive(Parser)]
 #[command(
     version,
-    about = "Searches Japanese shops with pure HTTP calls. Connectors: amazon, rakuten, iherb, ikea, nitori, uniqlo, cainz, monotaro, hotpepper, tabelog, tablecheck"
+    about = "Searches Japanese shops with pure HTTP calls. Connectors: amazon, rakuten, iherb, ikea, nitori, uniqlo, cainz, monotaro, apple, hotpepper, tabelog, tablecheck"
 )]
 struct Cli {
     #[arg(long, global = true, help = "Print JSON instead of text")]
@@ -75,6 +75,13 @@ enum Store {
     Monotaro {
         #[command(subcommand)]
         cmd: ShopCmd,
+    },
+    #[command(
+        about = "Apple Store Japan (apple.com/jp): Mac models, configure-to-order prices, refurbished"
+    )]
+    Apple {
+        #[command(subcommand)]
+        cmd: AppleCmd,
     },
     #[command(about = "HotPepper Beauty hair salons and barbers (beauty.hotpepper.jp)")]
     Hotpepper {
@@ -189,6 +196,34 @@ enum ShopCmd {
     Item {
         #[arg(help = "Product id or URL")]
         id: String,
+    },
+}
+
+#[derive(Subcommand)]
+enum AppleCmd {
+    #[command(about = "Buyable models of a Mac family with their base price (tax included)")]
+    Models {
+        #[arg(help = "macbook-air, macbook-pro, macbook-neo, imac, mac-mini, mac-studio")]
+        family: String,
+        #[arg(long, short = 'n', help = "Show at most N results")]
+        limit: Option<usize>,
+    },
+    #[command(
+        about = "Configure-to-order options with price deltas, the total and the min/max for the chip",
+        long_about = "Configure-to-order options with price deltas, the total and the min/max for the chip.\n\n  shop apple configure macbook-pro 14inch m5pro 48gb\n  shop apple configure macbook-pro/14inch-silver-standard-m6-12-12 memory=32gb"
+    )]
+    Configure {
+        #[arg(help = "Family, model id from `shop apple models`, or model URL")]
+        model: String,
+        #[arg(help = "Values to select, e.g. 16inch m5max 64gb 2tb, or dimension=value")]
+        options: Vec<String>,
+    },
+    #[command(about = "Apple Certified Refurbished (整備済製品) listings")]
+    Refurb {
+        #[arg(help = "mac (default), ipad, iphone, or a family such as macbook-pro")]
+        family: Option<String>,
+        #[arg(long, short = 'n', help = "Show at most N results")]
+        limit: Option<usize>,
     },
 }
 
@@ -314,6 +349,7 @@ fn run(cli: Cli) -> Result<()> {
         Store::Uniqlo { cmd } => run_shop(&uniqlo::Uniqlo, cmd, json, cli.verbose),
         Store::Cainz { cmd } => run_shop(&cainz::Cainz, cmd, json, cli.verbose),
         Store::Monotaro { cmd } => run_shop(&monotaro::Monotaro, cmd, json, cli.verbose),
+        Store::Apple { cmd } => run_apple(cmd, json, cli.verbose),
         Store::Hotpepper { cmd } => run_venue(&hotpepper::HotPepper, cmd, json, cli.verbose),
         Store::Tabelog { cmd } => run_venue(&tabelog::Tabelog, cmd, json, cli.verbose),
         Store::Tablecheck { cmd } => run_venue(&tablecheck::TableCheck, cmd, json, cli.verbose),
@@ -388,6 +424,31 @@ fn run_shop(shop: &dyn Connector, cmd: ShopCmd, json: bool, verbose: bool) -> Re
         ShopCmd::Item { id } => {
             let p = shop.item(&fetcher, &id)?;
             emit(json, &p, || output::product(&p))
+        }
+    }
+}
+
+fn run_apple(cmd: AppleCmd, json: bool, verbose: bool) -> Result<()> {
+    let fetcher = Fetcher::new(verbose);
+    match cmd {
+        AppleCmd::Models { family, limit } => {
+            let catalog = apple::fetch_catalog(&fetcher, &apple::family_slug(&family)?)?;
+            let mut res = apple::models(&catalog);
+            if let Some(n) = limit {
+                res.items.truncate(n);
+            }
+            emit(json, &res, || output::products(&res))
+        }
+        AppleCmd::Configure { model, options } => {
+            let c = apple::configure(&fetcher, &model, &options)?;
+            emit(json, &c, || output::apple_configuration(&c))
+        }
+        AppleCmd::Refurb { family, limit } => {
+            let mut res = apple::fetch_refurb(&fetcher, family.as_deref())?;
+            if let Some(n) = limit {
+                res.items.truncate(n);
+            }
+            emit(json, &res, || output::products(&res))
         }
     }
 }

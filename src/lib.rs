@@ -1,4 +1,5 @@
 pub mod amazon;
+pub mod apple;
 pub mod cainz;
 pub mod fetch;
 pub mod hotpepper;

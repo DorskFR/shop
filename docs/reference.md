@@ -12,6 +12,9 @@
 | `shop rakuten item <shop:itemid>` | One item, same fields |
 | `shop <iherb\|ikea\|nitori\|uniqlo\|cainz\|monotaro> search <query>` | Total count, page, items: id, name, URL, brand, price, list price, rating, rating count, stock, badges, variants, image |
 | `shop <iherb\|ikea\|nitori\|uniqlo\|cainz\|monotaro> item <id\|url>` | Same fields plus categories, specification rows (`details`) and description. Cainz adds delivery and pickup stock rows; Monotaro adds order code, part number and ship lead time, or one row per variant for a product group |
+| `shop apple models <family>` | Models of a Mac family, cheapest first, colors merged: model id, name, base price (tax included), colors, part numbers of the stock configurations |
+| `shop apple configure <family\|model\|url> [value...]` | Total price for a configuration, its min and max for the chosen chip, and every option group (chip, memory, storage, display, power adapter, keyboard, pro apps) with each choice's price delta and resulting total. Values pick options, e.g. `14inch m5pro 48gb 1tb`, or `dimension=value` such as `memory=32gb`; omitted options keep the model's defaults |
+| `shop apple refurb [family]` | Apple Certified Refurbished (整備済製品): part number, name, URL, price, model, size, year, color, memory, storage, image. Family `mac` (default), `ipad`, `iphone` or a family such as `macbook-pro` |
 | `shop <hotpepper\|tabelog\|tablecheck> search [query] [-a area]` | Total count, page, places: id, name, URL, genre, area, access, rating, rating count, budget, badges, image |
 | `shop <hotpepper\|tabelog\|tablecheck> item <id\|url>` | Same fields plus address, hours, closed days, phone, booking URL, detail rows, menus (coupons, courses) and description |
 | `shop completions <bash\|zsh\|fish\|elvish\|powershell>` | Completion script on stdout |
@@ -31,6 +34,7 @@
 | `--width`, `--height` | amazon price | Chart size in pixels, default 1200x350 |
 | `-o`, `--output PATH` | amazon price | PNG path, default `<asin>-<range>d.png` in the current directory |
 | `-n N` | search | Amazon, iHerb, IKEA, Nitori, Uniqlo, Cainz, Monotaro: keep the first N results. Rakuten: results per page, max 30 |
+| `-n N` | apple models, refurb | Keep the first N results |
 | `--sort` | rakuten search | `standard`, `price-asc`, `price-desc`, `reviews`, `rating`, `newest` |
 | `--min-price`, `--max-price` | rakuten search | Price range in yen |
 | `--sort` | iherb, ikea, nitori, uniqlo search | `relevance`, `price-asc`, `price-desc`, `reviews`, `newest` |
@@ -78,6 +82,16 @@ Endpoint `https://openapi.rakuten.co.jp/ichibams/api/IchibaItem/Search/20260701`
 | `uniqlo` | `uniqlo.com/jp/api/commerce/v5/ja/products` JSON, up to 100 per page | `.../products/<id>/price-groups/<pg>/details` and `/l2s` stock JSON | `E465185-000`, `465185`, product URL |
 
 Prices are integers in yen. `price` is what the shop charges now; `list_price` is set only when the shop shows a higher regular price. Cainz and Monotaro prices include tax.
+
+## Apple endpoints
+
+| Command | Source |
+|---|---|
+| `models` | `apple.com/jp/shop/buy-mac/<family>` page, `PRODUCT_SELECTION_BOOTSTRAP` (models, dimensions, base prices) |
+| `configure` | The buy page (or the model URL's page) for the dimensions, then the configurator JSON `apple.com/jp/shop/api/cto/update-config?collection=<collection>&sv.<dimension>=<value>...&sections=...`, which returns each option's price delta and the selected kit's total. A rejected selection is retried without the chosen options to say which value the chip does not support |
+| `refurb` | `apple.com/jp/shop/refurbished/<mac\|ipad\|iphone>[/<family>]` page, `REFURB_GRID_BOOTSTRAP`, filtered by the page's model filter |
+
+Model ids are `<family>/<price key>`, e.g. `macbook-pro/14inch-silver-standard-m5pro-15-16`. `min_price` and `max_price` add the cheapest and dearest choice of every priced group except the chip. Apple prices include tax. An unknown family is HTTP 404 (exit code 4).
 
 ## Place endpoints
 
